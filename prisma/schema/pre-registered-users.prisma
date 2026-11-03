@@ -1,0 +1,33 @@
+// ==========================================
+// PRE-REGISTERED USERS
+// ==========================================
+
+model PreRegisteredUser {
+  id       Int @id @default(autoincrement()) @db.UnsignedInt
+  bankId   Int @map("bank_id") @db.UnsignedInt
+  branchId Int @map("branch_id") @db.UnsignedInt
+
+  employeeId   String?   @map("employee_id") @db.VarChar(100)
+  employeeName String?   @map("employee_name") @db.VarChar(255)
+  position     String?   @db.VarChar(190)
+  dateOfBirth  DateTime? @map("date_of_birth") @db.Date
+  gender       String?   @db.VarChar(30)
+  mobileNo     String?   @map("mobile_no") @db.VarChar(30)
+  email        String    @db.VarChar(190)
+
+  status               RegistrationStatus @default(PENDING)
+  rejectReason         String?            @map("reject_reason") @db.Text
+  approvedRejectDate   DateTime?          @map("approved_reject_date") @db.DateTime(6)
+  approvedRejectUserId Int?               @map("approved_reject_user_id") @db.UnsignedInt
+
+  createdAt DateTime @default(now()) @map("created_at") @db.DateTime(6)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.DateTime(6)
+
+  bank   Bank       @relation(fields: [bankId], references: [id], onDelete: Restrict)
+  branch BankBranch @relation(fields: [branchId], references: [id], onDelete: Restrict)
+
+  @@index([bankId, email, status])
+  @@index([branchId])
+  @@index([employeeId])
+  @@map("pre_registered_users")
+}

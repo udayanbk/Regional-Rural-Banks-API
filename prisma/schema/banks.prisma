@@ -1,0 +1,21 @@
+// ==========================================
+// BANK MASTER
+// ==========================================
+
+model Bank {
+  id       Int     @id @default(autoincrement()) @db.UnsignedInt
+  bankName String  @map("bank_name") @db.VarChar(255)
+  bankCode String  @unique @map("bank_code") @db.VarChar(50)
+  address  String? @db.Text
+  isActive Boolean @default(true) @map("is_active")
+
+  createdAt DateTime @default(now()) @map("created_at") @db.DateTime(6)
+  updatedAt DateTime @updatedAt @map("updated_at") @db.DateTime(6)
+
+  emailDomains       BankEmailDomain[]
+  branches           BankBranch[]
+  preRegisteredUsers PreRegisteredUser[]
+  users              User[]
+
+  @@map("banks")
+}
