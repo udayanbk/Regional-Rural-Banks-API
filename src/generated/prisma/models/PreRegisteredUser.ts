@@ -711,10 +711,6 @@ export type PreRegisteredUserUncheckedUpdateManyWithoutBankNestedInput = {
   deleteMany?: Prisma.PreRegisteredUserScalarWhereInput | Prisma.PreRegisteredUserScalarWhereInput[]
 }
 
-export type NullableDateTimeFieldUpdateOperationsInput = {
-  set?: Date | string | null
-}
-
 export type EnumRegistrationStatusFieldUpdateOperationsInput = {
   set?: $Enums.RegistrationStatus
 }

@@ -8,6 +8,7 @@
  *
  * 🟢 You can import this file directly.
  */
+export type * from './models/AuthSession.js'
 export type * from './models/BankBranch.js'
 export type * from './models/BankEmailDomain.js'
 export type * from './models/Bank.js'

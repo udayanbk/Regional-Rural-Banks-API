@@ -458,10 +458,6 @@ export type BankUpdateOneRequiredWithoutEmailDomainsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.BankUpdateToOneWithWhereWithoutEmailDomainsInput, Prisma.BankUpdateWithoutEmailDomainsInput>, Prisma.BankUncheckedUpdateWithoutEmailDomainsInput>
 }
 
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
-}
-
 export type BankCreateNestedOneWithoutPreRegisteredUsersInput = {
   create?: Prisma.XOR<Prisma.BankCreateWithoutPreRegisteredUsersInput, Prisma.BankUncheckedCreateWithoutPreRegisteredUsersInput>
   connectOrCreate?: Prisma.BankCreateOrConnectWithoutPreRegisteredUsersInput

@@ -502,16 +502,8 @@ export type BankBranchUncheckedCreateNestedManyWithoutParentBranchInput = {
   connect?: Prisma.BankBranchWhereUniqueInput | Prisma.BankBranchWhereUniqueInput[]
 }
 
-export type StringFieldUpdateOperationsInput = {
-  set?: string
-}
-
 export type BoolFieldUpdateOperationsInput = {
   set?: boolean
-}
-
-export type DateTimeFieldUpdateOperationsInput = {
-  set?: Date | string
 }
 
 export type BankBranchUpdateOneWithoutChildBranchesNestedInput = {
@@ -536,14 +528,6 @@ export type BankBranchUpdateManyWithoutParentBranchNestedInput = {
   update?: Prisma.BankBranchUpdateWithWhereUniqueWithoutParentBranchInput | Prisma.BankBranchUpdateWithWhereUniqueWithoutParentBranchInput[]
   updateMany?: Prisma.BankBranchUpdateManyWithWhereWithoutParentBranchInput | Prisma.BankBranchUpdateManyWithWhereWithoutParentBranchInput[]
   deleteMany?: Prisma.BankBranchScalarWhereInput | Prisma.BankBranchScalarWhereInput[]
-}
-
-export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
 }
 
 export type NullableIntFieldUpdateOperationsInput = {
