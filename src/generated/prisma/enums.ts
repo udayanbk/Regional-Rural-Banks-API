@@ -16,3 +16,21 @@ export const RegistrationStatus = {
 } as const
 
 export type RegistrationStatus = (typeof RegistrationStatus)[keyof typeof RegistrationStatus]
+
+
+export const RegistrationPortal = {
+  SP: 'SP',
+  SSO: 'SSO'
+} as const
+
+export type RegistrationPortal = (typeof RegistrationPortal)[keyof typeof RegistrationPortal]
+
+
+export const RegistrationUserType = {
+  SP_EMPLOYEE: 'SP_EMPLOYEE',
+  LICENSING_USER: 'LICENSING_USER',
+  SALES_SUPPORT_OFFICER: 'SALES_SUPPORT_OFFICER',
+  REGIONAL_MANAGER: 'REGIONAL_MANAGER'
+} as const
+
+export type RegistrationUserType = (typeof RegistrationUserType)[keyof typeof RegistrationUserType]

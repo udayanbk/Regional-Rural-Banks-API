@@ -15,7 +15,8 @@ model Bank {
   emailDomains       BankEmailDomain[]
   branches           BankBranch[]
   preRegisteredUsers PreRegisteredUser[]
-  users              User[]
+  rrbUsers RrbUser[]
+  ssoUsers SsoUser[]
 
   @@map("banks")
 }

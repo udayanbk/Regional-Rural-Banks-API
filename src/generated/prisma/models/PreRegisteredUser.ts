@@ -44,6 +44,8 @@ export type PreRegisteredUserMinAggregateOutputType = {
   id: number | null
   bankId: number | null
   branchId: number | null
+  portal: $Enums.RegistrationPortal | null
+  userType: $Enums.RegistrationUserType | null
   employeeId: string | null
   employeeName: string | null
   position: string | null
@@ -63,6 +65,8 @@ export type PreRegisteredUserMaxAggregateOutputType = {
   id: number | null
   bankId: number | null
   branchId: number | null
+  portal: $Enums.RegistrationPortal | null
+  userType: $Enums.RegistrationUserType | null
   employeeId: string | null
   employeeName: string | null
   position: string | null
@@ -82,6 +86,8 @@ export type PreRegisteredUserCountAggregateOutputType = {
   id: number
   bankId: number
   branchId: number
+  portal: number
+  userType: number
   employeeId: number
   employeeName: number
   position: number
@@ -117,6 +123,8 @@ export type PreRegisteredUserMinAggregateInputType = {
   id?: true
   bankId?: true
   branchId?: true
+  portal?: true
+  userType?: true
   employeeId?: true
   employeeName?: true
   position?: true
@@ -136,6 +144,8 @@ export type PreRegisteredUserMaxAggregateInputType = {
   id?: true
   bankId?: true
   branchId?: true
+  portal?: true
+  userType?: true
   employeeId?: true
   employeeName?: true
   position?: true
@@ -155,6 +165,8 @@ export type PreRegisteredUserCountAggregateInputType = {
   id?: true
   bankId?: true
   branchId?: true
+  portal?: true
+  userType?: true
   employeeId?: true
   employeeName?: true
   position?: true
@@ -260,7 +272,9 @@ export type PreRegisteredUserGroupByArgs<ExtArgs extends runtime.Types.Extension
 export type PreRegisteredUserGroupByOutputType = {
   id: number
   bankId: number
-  branchId: number
+  branchId: number | null
+  portal: $Enums.RegistrationPortal
+  userType: $Enums.RegistrationUserType
   employeeId: string | null
   employeeName: string | null
   position: string | null
@@ -302,7 +316,9 @@ export type PreRegisteredUserWhereInput = {
   NOT?: Prisma.PreRegisteredUserWhereInput | Prisma.PreRegisteredUserWhereInput[]
   id?: Prisma.IntFilter<"PreRegisteredUser"> | number
   bankId?: Prisma.IntFilter<"PreRegisteredUser"> | number
-  branchId?: Prisma.IntFilter<"PreRegisteredUser"> | number
+  branchId?: Prisma.IntNullableFilter<"PreRegisteredUser"> | number | null
+  portal?: Prisma.EnumRegistrationPortalFilter<"PreRegisteredUser"> | $Enums.RegistrationPortal
+  userType?: Prisma.EnumRegistrationUserTypeFilter<"PreRegisteredUser"> | $Enums.RegistrationUserType
   employeeId?: Prisma.StringNullableFilter<"PreRegisteredUser"> | string | null
   employeeName?: Prisma.StringNullableFilter<"PreRegisteredUser"> | string | null
   position?: Prisma.StringNullableFilter<"PreRegisteredUser"> | string | null
@@ -317,13 +333,15 @@ export type PreRegisteredUserWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"PreRegisteredUser"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"PreRegisteredUser"> | Date | string
   bank?: Prisma.XOR<Prisma.BankScalarRelationFilter, Prisma.BankWhereInput>
-  branch?: Prisma.XOR<Prisma.BankBranchScalarRelationFilter, Prisma.BankBranchWhereInput>
+  branch?: Prisma.XOR<Prisma.BankBranchNullableScalarRelationFilter, Prisma.BankBranchWhereInput> | null
 }
 
 export type PreRegisteredUserOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   bankId?: Prisma.SortOrder
-  branchId?: Prisma.SortOrder
+  branchId?: Prisma.SortOrderInput | Prisma.SortOrder
+  portal?: Prisma.SortOrder
+  userType?: Prisma.SortOrder
   employeeId?: Prisma.SortOrderInput | Prisma.SortOrder
   employeeName?: Prisma.SortOrderInput | Prisma.SortOrder
   position?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -348,7 +366,9 @@ export type PreRegisteredUserWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.PreRegisteredUserWhereInput[]
   NOT?: Prisma.PreRegisteredUserWhereInput | Prisma.PreRegisteredUserWhereInput[]
   bankId?: Prisma.IntFilter<"PreRegisteredUser"> | number
-  branchId?: Prisma.IntFilter<"PreRegisteredUser"> | number
+  branchId?: Prisma.IntNullableFilter<"PreRegisteredUser"> | number | null
+  portal?: Prisma.EnumRegistrationPortalFilter<"PreRegisteredUser"> | $Enums.RegistrationPortal
+  userType?: Prisma.EnumRegistrationUserTypeFilter<"PreRegisteredUser"> | $Enums.RegistrationUserType
   employeeId?: Prisma.StringNullableFilter<"PreRegisteredUser"> | string | null
   employeeName?: Prisma.StringNullableFilter<"PreRegisteredUser"> | string | null
   position?: Prisma.StringNullableFilter<"PreRegisteredUser"> | string | null
@@ -363,13 +383,15 @@ export type PreRegisteredUserWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"PreRegisteredUser"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"PreRegisteredUser"> | Date | string
   bank?: Prisma.XOR<Prisma.BankScalarRelationFilter, Prisma.BankWhereInput>
-  branch?: Prisma.XOR<Prisma.BankBranchScalarRelationFilter, Prisma.BankBranchWhereInput>
+  branch?: Prisma.XOR<Prisma.BankBranchNullableScalarRelationFilter, Prisma.BankBranchWhereInput> | null
 }, "id">
 
 export type PreRegisteredUserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   bankId?: Prisma.SortOrder
-  branchId?: Prisma.SortOrder
+  branchId?: Prisma.SortOrderInput | Prisma.SortOrder
+  portal?: Prisma.SortOrder
+  userType?: Prisma.SortOrder
   employeeId?: Prisma.SortOrderInput | Prisma.SortOrder
   employeeName?: Prisma.SortOrderInput | Prisma.SortOrder
   position?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -396,7 +418,9 @@ export type PreRegisteredUserScalarWhereWithAggregatesInput = {
   NOT?: Prisma.PreRegisteredUserScalarWhereWithAggregatesInput | Prisma.PreRegisteredUserScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"PreRegisteredUser"> | number
   bankId?: Prisma.IntWithAggregatesFilter<"PreRegisteredUser"> | number
-  branchId?: Prisma.IntWithAggregatesFilter<"PreRegisteredUser"> | number
+  branchId?: Prisma.IntNullableWithAggregatesFilter<"PreRegisteredUser"> | number | null
+  portal?: Prisma.EnumRegistrationPortalWithAggregatesFilter<"PreRegisteredUser"> | $Enums.RegistrationPortal
+  userType?: Prisma.EnumRegistrationUserTypeWithAggregatesFilter<"PreRegisteredUser"> | $Enums.RegistrationUserType
   employeeId?: Prisma.StringNullableWithAggregatesFilter<"PreRegisteredUser"> | string | null
   employeeName?: Prisma.StringNullableWithAggregatesFilter<"PreRegisteredUser"> | string | null
   position?: Prisma.StringNullableWithAggregatesFilter<"PreRegisteredUser"> | string | null
@@ -413,6 +437,8 @@ export type PreRegisteredUserScalarWhereWithAggregatesInput = {
 }
 
 export type PreRegisteredUserCreateInput = {
+  portal: $Enums.RegistrationPortal
+  userType: $Enums.RegistrationUserType
   employeeId?: string | null
   employeeName?: string | null
   position?: string | null
@@ -427,13 +453,15 @@ export type PreRegisteredUserCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   bank: Prisma.BankCreateNestedOneWithoutPreRegisteredUsersInput
-  branch: Prisma.BankBranchCreateNestedOneWithoutPreRegisteredUsersInput
+  branch?: Prisma.BankBranchCreateNestedOneWithoutPreRegisteredUsersInput
 }
 
 export type PreRegisteredUserUncheckedCreateInput = {
   id?: number
   bankId: number
-  branchId: number
+  branchId?: number | null
+  portal: $Enums.RegistrationPortal
+  userType: $Enums.RegistrationUserType
   employeeId?: string | null
   employeeName?: string | null
   position?: string | null
@@ -450,6 +478,8 @@ export type PreRegisteredUserUncheckedCreateInput = {
 }
 
 export type PreRegisteredUserUpdateInput = {
+  portal?: Prisma.EnumRegistrationPortalFieldUpdateOperationsInput | $Enums.RegistrationPortal
+  userType?: Prisma.EnumRegistrationUserTypeFieldUpdateOperationsInput | $Enums.RegistrationUserType
   employeeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employeeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -464,13 +494,15 @@ export type PreRegisteredUserUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bank?: Prisma.BankUpdateOneRequiredWithoutPreRegisteredUsersNestedInput
-  branch?: Prisma.BankBranchUpdateOneRequiredWithoutPreRegisteredUsersNestedInput
+  branch?: Prisma.BankBranchUpdateOneWithoutPreRegisteredUsersNestedInput
 }
 
 export type PreRegisteredUserUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   bankId?: Prisma.IntFieldUpdateOperationsInput | number
-  branchId?: Prisma.IntFieldUpdateOperationsInput | number
+  branchId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  portal?: Prisma.EnumRegistrationPortalFieldUpdateOperationsInput | $Enums.RegistrationPortal
+  userType?: Prisma.EnumRegistrationUserTypeFieldUpdateOperationsInput | $Enums.RegistrationUserType
   employeeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employeeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -489,7 +521,9 @@ export type PreRegisteredUserUncheckedUpdateInput = {
 export type PreRegisteredUserCreateManyInput = {
   id?: number
   bankId: number
-  branchId: number
+  branchId?: number | null
+  portal: $Enums.RegistrationPortal
+  userType: $Enums.RegistrationUserType
   employeeId?: string | null
   employeeName?: string | null
   position?: string | null
@@ -506,6 +540,8 @@ export type PreRegisteredUserCreateManyInput = {
 }
 
 export type PreRegisteredUserUpdateManyMutationInput = {
+  portal?: Prisma.EnumRegistrationPortalFieldUpdateOperationsInput | $Enums.RegistrationPortal
+  userType?: Prisma.EnumRegistrationUserTypeFieldUpdateOperationsInput | $Enums.RegistrationUserType
   employeeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employeeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -524,7 +560,9 @@ export type PreRegisteredUserUpdateManyMutationInput = {
 export type PreRegisteredUserUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   bankId?: Prisma.IntFieldUpdateOperationsInput | number
-  branchId?: Prisma.IntFieldUpdateOperationsInput | number
+  branchId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  portal?: Prisma.EnumRegistrationPortalFieldUpdateOperationsInput | $Enums.RegistrationPortal
+  userType?: Prisma.EnumRegistrationUserTypeFieldUpdateOperationsInput | $Enums.RegistrationUserType
   employeeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employeeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -560,6 +598,8 @@ export type PreRegisteredUserCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   bankId?: Prisma.SortOrder
   branchId?: Prisma.SortOrder
+  portal?: Prisma.SortOrder
+  userType?: Prisma.SortOrder
   employeeId?: Prisma.SortOrder
   employeeName?: Prisma.SortOrder
   position?: Prisma.SortOrder
@@ -586,6 +626,8 @@ export type PreRegisteredUserMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   bankId?: Prisma.SortOrder
   branchId?: Prisma.SortOrder
+  portal?: Prisma.SortOrder
+  userType?: Prisma.SortOrder
   employeeId?: Prisma.SortOrder
   employeeName?: Prisma.SortOrder
   position?: Prisma.SortOrder
@@ -605,6 +647,8 @@ export type PreRegisteredUserMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   bankId?: Prisma.SortOrder
   branchId?: Prisma.SortOrder
+  portal?: Prisma.SortOrder
+  userType?: Prisma.SortOrder
   employeeId?: Prisma.SortOrder
   employeeName?: Prisma.SortOrder
   position?: Prisma.SortOrder
@@ -711,11 +755,33 @@ export type PreRegisteredUserUncheckedUpdateManyWithoutBankNestedInput = {
   deleteMany?: Prisma.PreRegisteredUserScalarWhereInput | Prisma.PreRegisteredUserScalarWhereInput[]
 }
 
+export type EnumRegistrationPortalFieldUpdateOperationsInput = {
+  set?: $Enums.RegistrationPortal
+}
+
+export type EnumRegistrationUserTypeFieldUpdateOperationsInput = {
+  set?: $Enums.RegistrationUserType
+}
+
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null
+}
+
 export type EnumRegistrationStatusFieldUpdateOperationsInput = {
   set?: $Enums.RegistrationStatus
 }
 
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
 export type PreRegisteredUserCreateWithoutBranchInput = {
+  portal: $Enums.RegistrationPortal
+  userType: $Enums.RegistrationUserType
   employeeId?: string | null
   employeeName?: string | null
   position?: string | null
@@ -735,6 +801,8 @@ export type PreRegisteredUserCreateWithoutBranchInput = {
 export type PreRegisteredUserUncheckedCreateWithoutBranchInput = {
   id?: number
   bankId: number
+  portal: $Enums.RegistrationPortal
+  userType: $Enums.RegistrationUserType
   employeeId?: string | null
   employeeName?: string | null
   position?: string | null
@@ -782,7 +850,9 @@ export type PreRegisteredUserScalarWhereInput = {
   NOT?: Prisma.PreRegisteredUserScalarWhereInput | Prisma.PreRegisteredUserScalarWhereInput[]
   id?: Prisma.IntFilter<"PreRegisteredUser"> | number
   bankId?: Prisma.IntFilter<"PreRegisteredUser"> | number
-  branchId?: Prisma.IntFilter<"PreRegisteredUser"> | number
+  branchId?: Prisma.IntNullableFilter<"PreRegisteredUser"> | number | null
+  portal?: Prisma.EnumRegistrationPortalFilter<"PreRegisteredUser"> | $Enums.RegistrationPortal
+  userType?: Prisma.EnumRegistrationUserTypeFilter<"PreRegisteredUser"> | $Enums.RegistrationUserType
   employeeId?: Prisma.StringNullableFilter<"PreRegisteredUser"> | string | null
   employeeName?: Prisma.StringNullableFilter<"PreRegisteredUser"> | string | null
   position?: Prisma.StringNullableFilter<"PreRegisteredUser"> | string | null
@@ -799,6 +869,8 @@ export type PreRegisteredUserScalarWhereInput = {
 }
 
 export type PreRegisteredUserCreateWithoutBankInput = {
+  portal: $Enums.RegistrationPortal
+  userType: $Enums.RegistrationUserType
   employeeId?: string | null
   employeeName?: string | null
   position?: string | null
@@ -812,12 +884,14 @@ export type PreRegisteredUserCreateWithoutBankInput = {
   approvedRejectUserId?: number | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  branch: Prisma.BankBranchCreateNestedOneWithoutPreRegisteredUsersInput
+  branch?: Prisma.BankBranchCreateNestedOneWithoutPreRegisteredUsersInput
 }
 
 export type PreRegisteredUserUncheckedCreateWithoutBankInput = {
   id?: number
-  branchId: number
+  branchId?: number | null
+  portal: $Enums.RegistrationPortal
+  userType: $Enums.RegistrationUserType
   employeeId?: string | null
   employeeName?: string | null
   position?: string | null
@@ -862,6 +936,8 @@ export type PreRegisteredUserUpdateManyWithWhereWithoutBankInput = {
 export type PreRegisteredUserCreateManyBranchInput = {
   id?: number
   bankId: number
+  portal: $Enums.RegistrationPortal
+  userType: $Enums.RegistrationUserType
   employeeId?: string | null
   employeeName?: string | null
   position?: string | null
@@ -878,6 +954,8 @@ export type PreRegisteredUserCreateManyBranchInput = {
 }
 
 export type PreRegisteredUserUpdateWithoutBranchInput = {
+  portal?: Prisma.EnumRegistrationPortalFieldUpdateOperationsInput | $Enums.RegistrationPortal
+  userType?: Prisma.EnumRegistrationUserTypeFieldUpdateOperationsInput | $Enums.RegistrationUserType
   employeeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employeeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -897,6 +975,8 @@ export type PreRegisteredUserUpdateWithoutBranchInput = {
 export type PreRegisteredUserUncheckedUpdateWithoutBranchInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   bankId?: Prisma.IntFieldUpdateOperationsInput | number
+  portal?: Prisma.EnumRegistrationPortalFieldUpdateOperationsInput | $Enums.RegistrationPortal
+  userType?: Prisma.EnumRegistrationUserTypeFieldUpdateOperationsInput | $Enums.RegistrationUserType
   employeeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employeeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -915,6 +995,8 @@ export type PreRegisteredUserUncheckedUpdateWithoutBranchInput = {
 export type PreRegisteredUserUncheckedUpdateManyWithoutBranchInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   bankId?: Prisma.IntFieldUpdateOperationsInput | number
+  portal?: Prisma.EnumRegistrationPortalFieldUpdateOperationsInput | $Enums.RegistrationPortal
+  userType?: Prisma.EnumRegistrationUserTypeFieldUpdateOperationsInput | $Enums.RegistrationUserType
   employeeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employeeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -932,7 +1014,9 @@ export type PreRegisteredUserUncheckedUpdateManyWithoutBranchInput = {
 
 export type PreRegisteredUserCreateManyBankInput = {
   id?: number
-  branchId: number
+  branchId?: number | null
+  portal: $Enums.RegistrationPortal
+  userType: $Enums.RegistrationUserType
   employeeId?: string | null
   employeeName?: string | null
   position?: string | null
@@ -949,6 +1033,8 @@ export type PreRegisteredUserCreateManyBankInput = {
 }
 
 export type PreRegisteredUserUpdateWithoutBankInput = {
+  portal?: Prisma.EnumRegistrationPortalFieldUpdateOperationsInput | $Enums.RegistrationPortal
+  userType?: Prisma.EnumRegistrationUserTypeFieldUpdateOperationsInput | $Enums.RegistrationUserType
   employeeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employeeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -962,12 +1048,14 @@ export type PreRegisteredUserUpdateWithoutBankInput = {
   approvedRejectUserId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  branch?: Prisma.BankBranchUpdateOneRequiredWithoutPreRegisteredUsersNestedInput
+  branch?: Prisma.BankBranchUpdateOneWithoutPreRegisteredUsersNestedInput
 }
 
 export type PreRegisteredUserUncheckedUpdateWithoutBankInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  branchId?: Prisma.IntFieldUpdateOperationsInput | number
+  branchId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  portal?: Prisma.EnumRegistrationPortalFieldUpdateOperationsInput | $Enums.RegistrationPortal
+  userType?: Prisma.EnumRegistrationUserTypeFieldUpdateOperationsInput | $Enums.RegistrationUserType
   employeeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employeeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -985,7 +1073,9 @@ export type PreRegisteredUserUncheckedUpdateWithoutBankInput = {
 
 export type PreRegisteredUserUncheckedUpdateManyWithoutBankInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  branchId?: Prisma.IntFieldUpdateOperationsInput | number
+  branchId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  portal?: Prisma.EnumRegistrationPortalFieldUpdateOperationsInput | $Enums.RegistrationPortal
+  userType?: Prisma.EnumRegistrationUserTypeFieldUpdateOperationsInput | $Enums.RegistrationUserType
   employeeId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   employeeName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   position?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1007,6 +1097,8 @@ export type PreRegisteredUserSelect<ExtArgs extends runtime.Types.Extensions.Int
   id?: boolean
   bankId?: boolean
   branchId?: boolean
+  portal?: boolean
+  userType?: boolean
   employeeId?: boolean
   employeeName?: boolean
   position?: boolean
@@ -1021,7 +1113,7 @@ export type PreRegisteredUserSelect<ExtArgs extends runtime.Types.Extensions.Int
   createdAt?: boolean
   updatedAt?: boolean
   bank?: boolean | Prisma.BankDefaultArgs<ExtArgs>
-  branch?: boolean | Prisma.BankBranchDefaultArgs<ExtArgs>
+  branch?: boolean | Prisma.PreRegisteredUser$branchArgs<ExtArgs>
 }, ExtArgs["result"]["preRegisteredUser"]>
 
 
@@ -1030,6 +1122,8 @@ export type PreRegisteredUserSelectScalar = {
   id?: boolean
   bankId?: boolean
   branchId?: boolean
+  portal?: boolean
+  userType?: boolean
   employeeId?: boolean
   employeeName?: boolean
   position?: boolean
@@ -1045,22 +1139,24 @@ export type PreRegisteredUserSelectScalar = {
   updatedAt?: boolean
 }
 
-export type PreRegisteredUserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "bankId" | "branchId" | "employeeId" | "employeeName" | "position" | "dateOfBirth" | "gender" | "mobileNo" | "email" | "status" | "rejectReason" | "approvedRejectDate" | "approvedRejectUserId" | "createdAt" | "updatedAt", ExtArgs["result"]["preRegisteredUser"]>
+export type PreRegisteredUserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "bankId" | "branchId" | "portal" | "userType" | "employeeId" | "employeeName" | "position" | "dateOfBirth" | "gender" | "mobileNo" | "email" | "status" | "rejectReason" | "approvedRejectDate" | "approvedRejectUserId" | "createdAt" | "updatedAt", ExtArgs["result"]["preRegisteredUser"]>
 export type PreRegisteredUserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   bank?: boolean | Prisma.BankDefaultArgs<ExtArgs>
-  branch?: boolean | Prisma.BankBranchDefaultArgs<ExtArgs>
+  branch?: boolean | Prisma.PreRegisteredUser$branchArgs<ExtArgs>
 }
 
 export type $PreRegisteredUserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "PreRegisteredUser"
   objects: {
     bank: Prisma.$BankPayload<ExtArgs>
-    branch: Prisma.$BankBranchPayload<ExtArgs>
+    branch: Prisma.$BankBranchPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     bankId: number
-    branchId: number
+    branchId: number | null
+    portal: $Enums.RegistrationPortal
+    userType: $Enums.RegistrationUserType
     employeeId: string | null
     employeeName: string | null
     position: string | null
@@ -1415,7 +1511,7 @@ readonly fields: PreRegisteredUserFieldRefs;
 export interface Prisma__PreRegisteredUserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   bank<T extends Prisma.BankDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BankDefaultArgs<ExtArgs>>): Prisma.Prisma__BankClient<runtime.Types.Result.GetResult<Prisma.$BankPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  branch<T extends Prisma.BankBranchDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BankBranchDefaultArgs<ExtArgs>>): Prisma.Prisma__BankBranchClient<runtime.Types.Result.GetResult<Prisma.$BankBranchPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  branch<T extends Prisma.PreRegisteredUser$branchArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.PreRegisteredUser$branchArgs<ExtArgs>>): Prisma.Prisma__BankBranchClient<runtime.Types.Result.GetResult<Prisma.$BankBranchPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1448,6 +1544,8 @@ export interface PreRegisteredUserFieldRefs {
   readonly id: Prisma.FieldRef<"PreRegisteredUser", 'Int'>
   readonly bankId: Prisma.FieldRef<"PreRegisteredUser", 'Int'>
   readonly branchId: Prisma.FieldRef<"PreRegisteredUser", 'Int'>
+  readonly portal: Prisma.FieldRef<"PreRegisteredUser", 'RegistrationPortal'>
+  readonly userType: Prisma.FieldRef<"PreRegisteredUser", 'RegistrationUserType'>
   readonly employeeId: Prisma.FieldRef<"PreRegisteredUser", 'String'>
   readonly employeeName: Prisma.FieldRef<"PreRegisteredUser", 'String'>
   readonly position: Prisma.FieldRef<"PreRegisteredUser", 'String'>
@@ -1806,6 +1904,25 @@ export type PreRegisteredUserDeleteManyArgs<ExtArgs extends runtime.Types.Extens
    * Limit how many PreRegisteredUsers to delete.
    */
   limit?: number
+}
+
+/**
+ * PreRegisteredUser.branch
+ */
+export type PreRegisteredUser$branchArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BankBranch
+   */
+  select?: Prisma.BankBranchSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the BankBranch
+   */
+  omit?: Prisma.BankBranchOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.BankBranchInclude<ExtArgs> | null
+  where?: Prisma.BankBranchWhereInput
 }
 
 /**

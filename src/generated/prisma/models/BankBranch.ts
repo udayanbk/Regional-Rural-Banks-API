@@ -29,13 +29,11 @@ export type AggregateBankBranch = {
 export type BankBranchAvgAggregateOutputType = {
   id: number | null
   bankId: number | null
-  parentBranchId: number | null
 }
 
 export type BankBranchSumAggregateOutputType = {
   id: number | null
   bankId: number | null
-  parentBranchId: number | null
 }
 
 export type BankBranchMinAggregateOutputType = {
@@ -43,7 +41,11 @@ export type BankBranchMinAggregateOutputType = {
   bankId: number | null
   branchCode: string | null
   branchName: string | null
-  parentBranchId: number | null
+  network: string | null
+  zone: string | null
+  region: string | null
+  sbiGiBranch: string | null
+  circle: string | null
   isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -54,7 +56,11 @@ export type BankBranchMaxAggregateOutputType = {
   bankId: number | null
   branchCode: string | null
   branchName: string | null
-  parentBranchId: number | null
+  network: string | null
+  zone: string | null
+  region: string | null
+  sbiGiBranch: string | null
+  circle: string | null
   isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -65,7 +71,11 @@ export type BankBranchCountAggregateOutputType = {
   bankId: number
   branchCode: number
   branchName: number
-  parentBranchId: number
+  network: number
+  zone: number
+  region: number
+  sbiGiBranch: number
+  circle: number
   isActive: number
   createdAt: number
   updatedAt: number
@@ -76,13 +86,11 @@ export type BankBranchCountAggregateOutputType = {
 export type BankBranchAvgAggregateInputType = {
   id?: true
   bankId?: true
-  parentBranchId?: true
 }
 
 export type BankBranchSumAggregateInputType = {
   id?: true
   bankId?: true
-  parentBranchId?: true
 }
 
 export type BankBranchMinAggregateInputType = {
@@ -90,7 +98,11 @@ export type BankBranchMinAggregateInputType = {
   bankId?: true
   branchCode?: true
   branchName?: true
-  parentBranchId?: true
+  network?: true
+  zone?: true
+  region?: true
+  sbiGiBranch?: true
+  circle?: true
   isActive?: true
   createdAt?: true
   updatedAt?: true
@@ -101,7 +113,11 @@ export type BankBranchMaxAggregateInputType = {
   bankId?: true
   branchCode?: true
   branchName?: true
-  parentBranchId?: true
+  network?: true
+  zone?: true
+  region?: true
+  sbiGiBranch?: true
+  circle?: true
   isActive?: true
   createdAt?: true
   updatedAt?: true
@@ -112,7 +128,11 @@ export type BankBranchCountAggregateInputType = {
   bankId?: true
   branchCode?: true
   branchName?: true
-  parentBranchId?: true
+  network?: true
+  zone?: true
+  region?: true
+  sbiGiBranch?: true
+  circle?: true
   isActive?: true
   createdAt?: true
   updatedAt?: true
@@ -210,7 +230,11 @@ export type BankBranchGroupByOutputType = {
   bankId: number
   branchCode: string
   branchName: string
-  parentBranchId: number | null
+  network: string | null
+  zone: string | null
+  region: string | null
+  sbiGiBranch: string | null
+  circle: string | null
   isActive: boolean
   createdAt: Date
   updatedAt: Date
@@ -244,15 +268,18 @@ export type BankBranchWhereInput = {
   bankId?: Prisma.IntFilter<"BankBranch"> | number
   branchCode?: Prisma.StringFilter<"BankBranch"> | string
   branchName?: Prisma.StringFilter<"BankBranch"> | string
-  parentBranchId?: Prisma.IntNullableFilter<"BankBranch"> | number | null
+  network?: Prisma.StringNullableFilter<"BankBranch"> | string | null
+  zone?: Prisma.StringNullableFilter<"BankBranch"> | string | null
+  region?: Prisma.StringNullableFilter<"BankBranch"> | string | null
+  sbiGiBranch?: Prisma.StringNullableFilter<"BankBranch"> | string | null
+  circle?: Prisma.StringNullableFilter<"BankBranch"> | string | null
   isActive?: Prisma.BoolFilter<"BankBranch"> | boolean
   createdAt?: Prisma.DateTimeFilter<"BankBranch"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"BankBranch"> | Date | string
   bank?: Prisma.XOR<Prisma.BankScalarRelationFilter, Prisma.BankWhereInput>
-  parentBranch?: Prisma.XOR<Prisma.BankBranchNullableScalarRelationFilter, Prisma.BankBranchWhereInput> | null
-  childBranches?: Prisma.BankBranchListRelationFilter
   preRegisteredUsers?: Prisma.PreRegisteredUserListRelationFilter
-  users?: Prisma.UserListRelationFilter
+  rrbUsers?: Prisma.RrbUserListRelationFilter
+  ssoUsers?: Prisma.SsoUserListRelationFilter
 }
 
 export type BankBranchOrderByWithRelationInput = {
@@ -260,15 +287,18 @@ export type BankBranchOrderByWithRelationInput = {
   bankId?: Prisma.SortOrder
   branchCode?: Prisma.SortOrder
   branchName?: Prisma.SortOrder
-  parentBranchId?: Prisma.SortOrderInput | Prisma.SortOrder
+  network?: Prisma.SortOrderInput | Prisma.SortOrder
+  zone?: Prisma.SortOrderInput | Prisma.SortOrder
+  region?: Prisma.SortOrderInput | Prisma.SortOrder
+  sbiGiBranch?: Prisma.SortOrderInput | Prisma.SortOrder
+  circle?: Prisma.SortOrderInput | Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   bank?: Prisma.BankOrderByWithRelationInput
-  parentBranch?: Prisma.BankBranchOrderByWithRelationInput
-  childBranches?: Prisma.BankBranchOrderByRelationAggregateInput
   preRegisteredUsers?: Prisma.PreRegisteredUserOrderByRelationAggregateInput
-  users?: Prisma.UserOrderByRelationAggregateInput
+  rrbUsers?: Prisma.RrbUserOrderByRelationAggregateInput
+  ssoUsers?: Prisma.SsoUserOrderByRelationAggregateInput
   _relevance?: Prisma.BankBranchOrderByRelevanceInput
 }
 
@@ -281,15 +311,18 @@ export type BankBranchWhereUniqueInput = Prisma.AtLeast<{
   bankId?: Prisma.IntFilter<"BankBranch"> | number
   branchCode?: Prisma.StringFilter<"BankBranch"> | string
   branchName?: Prisma.StringFilter<"BankBranch"> | string
-  parentBranchId?: Prisma.IntNullableFilter<"BankBranch"> | number | null
+  network?: Prisma.StringNullableFilter<"BankBranch"> | string | null
+  zone?: Prisma.StringNullableFilter<"BankBranch"> | string | null
+  region?: Prisma.StringNullableFilter<"BankBranch"> | string | null
+  sbiGiBranch?: Prisma.StringNullableFilter<"BankBranch"> | string | null
+  circle?: Prisma.StringNullableFilter<"BankBranch"> | string | null
   isActive?: Prisma.BoolFilter<"BankBranch"> | boolean
   createdAt?: Prisma.DateTimeFilter<"BankBranch"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"BankBranch"> | Date | string
   bank?: Prisma.XOR<Prisma.BankScalarRelationFilter, Prisma.BankWhereInput>
-  parentBranch?: Prisma.XOR<Prisma.BankBranchNullableScalarRelationFilter, Prisma.BankBranchWhereInput> | null
-  childBranches?: Prisma.BankBranchListRelationFilter
   preRegisteredUsers?: Prisma.PreRegisteredUserListRelationFilter
-  users?: Prisma.UserListRelationFilter
+  rrbUsers?: Prisma.RrbUserListRelationFilter
+  ssoUsers?: Prisma.SsoUserListRelationFilter
 }, "id" | "bankId_branchCode">
 
 export type BankBranchOrderByWithAggregationInput = {
@@ -297,7 +330,11 @@ export type BankBranchOrderByWithAggregationInput = {
   bankId?: Prisma.SortOrder
   branchCode?: Prisma.SortOrder
   branchName?: Prisma.SortOrder
-  parentBranchId?: Prisma.SortOrderInput | Prisma.SortOrder
+  network?: Prisma.SortOrderInput | Prisma.SortOrder
+  zone?: Prisma.SortOrderInput | Prisma.SortOrder
+  region?: Prisma.SortOrderInput | Prisma.SortOrder
+  sbiGiBranch?: Prisma.SortOrderInput | Prisma.SortOrder
+  circle?: Prisma.SortOrderInput | Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -316,7 +353,11 @@ export type BankBranchScalarWhereWithAggregatesInput = {
   bankId?: Prisma.IntWithAggregatesFilter<"BankBranch"> | number
   branchCode?: Prisma.StringWithAggregatesFilter<"BankBranch"> | string
   branchName?: Prisma.StringWithAggregatesFilter<"BankBranch"> | string
-  parentBranchId?: Prisma.IntNullableWithAggregatesFilter<"BankBranch"> | number | null
+  network?: Prisma.StringNullableWithAggregatesFilter<"BankBranch"> | string | null
+  zone?: Prisma.StringNullableWithAggregatesFilter<"BankBranch"> | string | null
+  region?: Prisma.StringNullableWithAggregatesFilter<"BankBranch"> | string | null
+  sbiGiBranch?: Prisma.StringNullableWithAggregatesFilter<"BankBranch"> | string | null
+  circle?: Prisma.StringNullableWithAggregatesFilter<"BankBranch"> | string | null
   isActive?: Prisma.BoolWithAggregatesFilter<"BankBranch"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"BankBranch"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"BankBranch"> | Date | string
@@ -325,14 +366,18 @@ export type BankBranchScalarWhereWithAggregatesInput = {
 export type BankBranchCreateInput = {
   branchCode: string
   branchName: string
+  network?: string | null
+  zone?: string | null
+  region?: string | null
+  sbiGiBranch?: string | null
+  circle?: string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   bank: Prisma.BankCreateNestedOneWithoutBranchesInput
-  parentBranch?: Prisma.BankBranchCreateNestedOneWithoutChildBranchesInput
-  childBranches?: Prisma.BankBranchCreateNestedManyWithoutParentBranchInput
   preRegisteredUsers?: Prisma.PreRegisteredUserCreateNestedManyWithoutBranchInput
-  users?: Prisma.UserCreateNestedManyWithoutBranchInput
+  rrbUsers?: Prisma.RrbUserCreateNestedManyWithoutBranchInput
+  ssoUsers?: Prisma.SsoUserCreateNestedManyWithoutBranchInput
 }
 
 export type BankBranchUncheckedCreateInput = {
@@ -340,26 +385,34 @@ export type BankBranchUncheckedCreateInput = {
   bankId: number
   branchCode: string
   branchName: string
-  parentBranchId?: number | null
+  network?: string | null
+  zone?: string | null
+  region?: string | null
+  sbiGiBranch?: string | null
+  circle?: string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  childBranches?: Prisma.BankBranchUncheckedCreateNestedManyWithoutParentBranchInput
   preRegisteredUsers?: Prisma.PreRegisteredUserUncheckedCreateNestedManyWithoutBranchInput
-  users?: Prisma.UserUncheckedCreateNestedManyWithoutBranchInput
+  rrbUsers?: Prisma.RrbUserUncheckedCreateNestedManyWithoutBranchInput
+  ssoUsers?: Prisma.SsoUserUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BankBranchUpdateInput = {
   branchCode?: Prisma.StringFieldUpdateOperationsInput | string
   branchName?: Prisma.StringFieldUpdateOperationsInput | string
+  network?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sbiGiBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  circle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bank?: Prisma.BankUpdateOneRequiredWithoutBranchesNestedInput
-  parentBranch?: Prisma.BankBranchUpdateOneWithoutChildBranchesNestedInput
-  childBranches?: Prisma.BankBranchUpdateManyWithoutParentBranchNestedInput
   preRegisteredUsers?: Prisma.PreRegisteredUserUpdateManyWithoutBranchNestedInput
-  users?: Prisma.UserUpdateManyWithoutBranchNestedInput
+  rrbUsers?: Prisma.RrbUserUpdateManyWithoutBranchNestedInput
+  ssoUsers?: Prisma.SsoUserUpdateManyWithoutBranchNestedInput
 }
 
 export type BankBranchUncheckedUpdateInput = {
@@ -367,13 +420,17 @@ export type BankBranchUncheckedUpdateInput = {
   bankId?: Prisma.IntFieldUpdateOperationsInput | number
   branchCode?: Prisma.StringFieldUpdateOperationsInput | string
   branchName?: Prisma.StringFieldUpdateOperationsInput | string
-  parentBranchId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  network?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sbiGiBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  circle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  childBranches?: Prisma.BankBranchUncheckedUpdateManyWithoutParentBranchNestedInput
   preRegisteredUsers?: Prisma.PreRegisteredUserUncheckedUpdateManyWithoutBranchNestedInput
-  users?: Prisma.UserUncheckedUpdateManyWithoutBranchNestedInput
+  rrbUsers?: Prisma.RrbUserUncheckedUpdateManyWithoutBranchNestedInput
+  ssoUsers?: Prisma.SsoUserUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 export type BankBranchCreateManyInput = {
@@ -381,7 +438,11 @@ export type BankBranchCreateManyInput = {
   bankId: number
   branchCode: string
   branchName: string
-  parentBranchId?: number | null
+  network?: string | null
+  zone?: string | null
+  region?: string | null
+  sbiGiBranch?: string | null
+  circle?: string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -390,6 +451,11 @@ export type BankBranchCreateManyInput = {
 export type BankBranchUpdateManyMutationInput = {
   branchCode?: Prisma.StringFieldUpdateOperationsInput | string
   branchName?: Prisma.StringFieldUpdateOperationsInput | string
+  network?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sbiGiBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  circle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -400,25 +466,14 @@ export type BankBranchUncheckedUpdateManyInput = {
   bankId?: Prisma.IntFieldUpdateOperationsInput | number
   branchCode?: Prisma.StringFieldUpdateOperationsInput | string
   branchName?: Prisma.StringFieldUpdateOperationsInput | string
-  parentBranchId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  network?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sbiGiBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  circle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-}
-
-export type BankBranchNullableScalarRelationFilter = {
-  is?: Prisma.BankBranchWhereInput | null
-  isNot?: Prisma.BankBranchWhereInput | null
-}
-
-export type BankBranchListRelationFilter = {
-  every?: Prisma.BankBranchWhereInput
-  some?: Prisma.BankBranchWhereInput
-  none?: Prisma.BankBranchWhereInput
-}
-
-export type BankBranchOrderByRelationAggregateInput = {
-  _count?: Prisma.SortOrder
 }
 
 export type BankBranchOrderByRelevanceInput = {
@@ -437,7 +492,11 @@ export type BankBranchCountOrderByAggregateInput = {
   bankId?: Prisma.SortOrder
   branchCode?: Prisma.SortOrder
   branchName?: Prisma.SortOrder
-  parentBranchId?: Prisma.SortOrder
+  network?: Prisma.SortOrder
+  zone?: Prisma.SortOrder
+  region?: Prisma.SortOrder
+  sbiGiBranch?: Prisma.SortOrder
+  circle?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -446,7 +505,6 @@ export type BankBranchCountOrderByAggregateInput = {
 export type BankBranchAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   bankId?: Prisma.SortOrder
-  parentBranchId?: Prisma.SortOrder
 }
 
 export type BankBranchMaxOrderByAggregateInput = {
@@ -454,7 +512,11 @@ export type BankBranchMaxOrderByAggregateInput = {
   bankId?: Prisma.SortOrder
   branchCode?: Prisma.SortOrder
   branchName?: Prisma.SortOrder
-  parentBranchId?: Prisma.SortOrder
+  network?: Prisma.SortOrder
+  zone?: Prisma.SortOrder
+  region?: Prisma.SortOrder
+  sbiGiBranch?: Prisma.SortOrder
+  circle?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -465,7 +527,11 @@ export type BankBranchMinOrderByAggregateInput = {
   bankId?: Prisma.SortOrder
   branchCode?: Prisma.SortOrder
   branchName?: Prisma.SortOrder
-  parentBranchId?: Prisma.SortOrder
+  network?: Prisma.SortOrder
+  zone?: Prisma.SortOrder
+  region?: Prisma.SortOrder
+  sbiGiBranch?: Prisma.SortOrder
+  circle?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -474,82 +540,45 @@ export type BankBranchMinOrderByAggregateInput = {
 export type BankBranchSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   bankId?: Prisma.SortOrder
-  parentBranchId?: Prisma.SortOrder
 }
 
-export type BankBranchScalarRelationFilter = {
-  is?: Prisma.BankBranchWhereInput
-  isNot?: Prisma.BankBranchWhereInput
+export type BankBranchListRelationFilter = {
+  every?: Prisma.BankBranchWhereInput
+  some?: Prisma.BankBranchWhereInput
+  none?: Prisma.BankBranchWhereInput
 }
 
-export type BankBranchCreateNestedOneWithoutChildBranchesInput = {
-  create?: Prisma.XOR<Prisma.BankBranchCreateWithoutChildBranchesInput, Prisma.BankBranchUncheckedCreateWithoutChildBranchesInput>
-  connectOrCreate?: Prisma.BankBranchCreateOrConnectWithoutChildBranchesInput
-  connect?: Prisma.BankBranchWhereUniqueInput
+export type BankBranchOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
 }
 
-export type BankBranchCreateNestedManyWithoutParentBranchInput = {
-  create?: Prisma.XOR<Prisma.BankBranchCreateWithoutParentBranchInput, Prisma.BankBranchUncheckedCreateWithoutParentBranchInput> | Prisma.BankBranchCreateWithoutParentBranchInput[] | Prisma.BankBranchUncheckedCreateWithoutParentBranchInput[]
-  connectOrCreate?: Prisma.BankBranchCreateOrConnectWithoutParentBranchInput | Prisma.BankBranchCreateOrConnectWithoutParentBranchInput[]
-  createMany?: Prisma.BankBranchCreateManyParentBranchInputEnvelope
-  connect?: Prisma.BankBranchWhereUniqueInput | Prisma.BankBranchWhereUniqueInput[]
+export type BankBranchNullableScalarRelationFilter = {
+  is?: Prisma.BankBranchWhereInput | null
+  isNot?: Prisma.BankBranchWhereInput | null
 }
 
-export type BankBranchUncheckedCreateNestedManyWithoutParentBranchInput = {
-  create?: Prisma.XOR<Prisma.BankBranchCreateWithoutParentBranchInput, Prisma.BankBranchUncheckedCreateWithoutParentBranchInput> | Prisma.BankBranchCreateWithoutParentBranchInput[] | Prisma.BankBranchUncheckedCreateWithoutParentBranchInput[]
-  connectOrCreate?: Prisma.BankBranchCreateOrConnectWithoutParentBranchInput | Prisma.BankBranchCreateOrConnectWithoutParentBranchInput[]
-  createMany?: Prisma.BankBranchCreateManyParentBranchInputEnvelope
-  connect?: Prisma.BankBranchWhereUniqueInput | Prisma.BankBranchWhereUniqueInput[]
+export type StringFieldUpdateOperationsInput = {
+  set?: string
+}
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
 }
 
 export type BoolFieldUpdateOperationsInput = {
   set?: boolean
 }
 
-export type BankBranchUpdateOneWithoutChildBranchesNestedInput = {
-  create?: Prisma.XOR<Prisma.BankBranchCreateWithoutChildBranchesInput, Prisma.BankBranchUncheckedCreateWithoutChildBranchesInput>
-  connectOrCreate?: Prisma.BankBranchCreateOrConnectWithoutChildBranchesInput
-  upsert?: Prisma.BankBranchUpsertWithoutChildBranchesInput
-  disconnect?: Prisma.BankBranchWhereInput | boolean
-  delete?: Prisma.BankBranchWhereInput | boolean
-  connect?: Prisma.BankBranchWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.BankBranchUpdateToOneWithWhereWithoutChildBranchesInput, Prisma.BankBranchUpdateWithoutChildBranchesInput>, Prisma.BankBranchUncheckedUpdateWithoutChildBranchesInput>
+export type DateTimeFieldUpdateOperationsInput = {
+  set?: Date | string
 }
 
-export type BankBranchUpdateManyWithoutParentBranchNestedInput = {
-  create?: Prisma.XOR<Prisma.BankBranchCreateWithoutParentBranchInput, Prisma.BankBranchUncheckedCreateWithoutParentBranchInput> | Prisma.BankBranchCreateWithoutParentBranchInput[] | Prisma.BankBranchUncheckedCreateWithoutParentBranchInput[]
-  connectOrCreate?: Prisma.BankBranchCreateOrConnectWithoutParentBranchInput | Prisma.BankBranchCreateOrConnectWithoutParentBranchInput[]
-  upsert?: Prisma.BankBranchUpsertWithWhereUniqueWithoutParentBranchInput | Prisma.BankBranchUpsertWithWhereUniqueWithoutParentBranchInput[]
-  createMany?: Prisma.BankBranchCreateManyParentBranchInputEnvelope
-  set?: Prisma.BankBranchWhereUniqueInput | Prisma.BankBranchWhereUniqueInput[]
-  disconnect?: Prisma.BankBranchWhereUniqueInput | Prisma.BankBranchWhereUniqueInput[]
-  delete?: Prisma.BankBranchWhereUniqueInput | Prisma.BankBranchWhereUniqueInput[]
-  connect?: Prisma.BankBranchWhereUniqueInput | Prisma.BankBranchWhereUniqueInput[]
-  update?: Prisma.BankBranchUpdateWithWhereUniqueWithoutParentBranchInput | Prisma.BankBranchUpdateWithWhereUniqueWithoutParentBranchInput[]
-  updateMany?: Prisma.BankBranchUpdateManyWithWhereWithoutParentBranchInput | Prisma.BankBranchUpdateManyWithWhereWithoutParentBranchInput[]
-  deleteMany?: Prisma.BankBranchScalarWhereInput | Prisma.BankBranchScalarWhereInput[]
-}
-
-export type NullableIntFieldUpdateOperationsInput = {
-  set?: number | null
+export type IntFieldUpdateOperationsInput = {
+  set?: number
   increment?: number
   decrement?: number
   multiply?: number
   divide?: number
-}
-
-export type BankBranchUncheckedUpdateManyWithoutParentBranchNestedInput = {
-  create?: Prisma.XOR<Prisma.BankBranchCreateWithoutParentBranchInput, Prisma.BankBranchUncheckedCreateWithoutParentBranchInput> | Prisma.BankBranchCreateWithoutParentBranchInput[] | Prisma.BankBranchUncheckedCreateWithoutParentBranchInput[]
-  connectOrCreate?: Prisma.BankBranchCreateOrConnectWithoutParentBranchInput | Prisma.BankBranchCreateOrConnectWithoutParentBranchInput[]
-  upsert?: Prisma.BankBranchUpsertWithWhereUniqueWithoutParentBranchInput | Prisma.BankBranchUpsertWithWhereUniqueWithoutParentBranchInput[]
-  createMany?: Prisma.BankBranchCreateManyParentBranchInputEnvelope
-  set?: Prisma.BankBranchWhereUniqueInput | Prisma.BankBranchWhereUniqueInput[]
-  disconnect?: Prisma.BankBranchWhereUniqueInput | Prisma.BankBranchWhereUniqueInput[]
-  delete?: Prisma.BankBranchWhereUniqueInput | Prisma.BankBranchWhereUniqueInput[]
-  connect?: Prisma.BankBranchWhereUniqueInput | Prisma.BankBranchWhereUniqueInput[]
-  update?: Prisma.BankBranchUpdateWithWhereUniqueWithoutParentBranchInput | Prisma.BankBranchUpdateWithWhereUniqueWithoutParentBranchInput[]
-  updateMany?: Prisma.BankBranchUpdateManyWithWhereWithoutParentBranchInput | Prisma.BankBranchUpdateManyWithWhereWithoutParentBranchInput[]
-  deleteMany?: Prisma.BankBranchScalarWhereInput | Prisma.BankBranchScalarWhereInput[]
 }
 
 export type BankBranchCreateNestedManyWithoutBankInput = {
@@ -600,182 +629,79 @@ export type BankBranchCreateNestedOneWithoutPreRegisteredUsersInput = {
   connect?: Prisma.BankBranchWhereUniqueInput
 }
 
-export type BankBranchUpdateOneRequiredWithoutPreRegisteredUsersNestedInput = {
+export type BankBranchUpdateOneWithoutPreRegisteredUsersNestedInput = {
   create?: Prisma.XOR<Prisma.BankBranchCreateWithoutPreRegisteredUsersInput, Prisma.BankBranchUncheckedCreateWithoutPreRegisteredUsersInput>
   connectOrCreate?: Prisma.BankBranchCreateOrConnectWithoutPreRegisteredUsersInput
   upsert?: Prisma.BankBranchUpsertWithoutPreRegisteredUsersInput
+  disconnect?: Prisma.BankBranchWhereInput | boolean
+  delete?: Prisma.BankBranchWhereInput | boolean
   connect?: Prisma.BankBranchWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.BankBranchUpdateToOneWithWhereWithoutPreRegisteredUsersInput, Prisma.BankBranchUpdateWithoutPreRegisteredUsersInput>, Prisma.BankBranchUncheckedUpdateWithoutPreRegisteredUsersInput>
 }
 
-export type BankBranchCreateNestedOneWithoutUsersInput = {
-  create?: Prisma.XOR<Prisma.BankBranchCreateWithoutUsersInput, Prisma.BankBranchUncheckedCreateWithoutUsersInput>
-  connectOrCreate?: Prisma.BankBranchCreateOrConnectWithoutUsersInput
+export type BankBranchCreateNestedOneWithoutRrbUsersInput = {
+  create?: Prisma.XOR<Prisma.BankBranchCreateWithoutRrbUsersInput, Prisma.BankBranchUncheckedCreateWithoutRrbUsersInput>
+  connectOrCreate?: Prisma.BankBranchCreateOrConnectWithoutRrbUsersInput
   connect?: Prisma.BankBranchWhereUniqueInput
 }
 
-export type BankBranchUpdateOneRequiredWithoutUsersNestedInput = {
-  create?: Prisma.XOR<Prisma.BankBranchCreateWithoutUsersInput, Prisma.BankBranchUncheckedCreateWithoutUsersInput>
-  connectOrCreate?: Prisma.BankBranchCreateOrConnectWithoutUsersInput
-  upsert?: Prisma.BankBranchUpsertWithoutUsersInput
+export type BankBranchUpdateOneWithoutRrbUsersNestedInput = {
+  create?: Prisma.XOR<Prisma.BankBranchCreateWithoutRrbUsersInput, Prisma.BankBranchUncheckedCreateWithoutRrbUsersInput>
+  connectOrCreate?: Prisma.BankBranchCreateOrConnectWithoutRrbUsersInput
+  upsert?: Prisma.BankBranchUpsertWithoutRrbUsersInput
+  disconnect?: Prisma.BankBranchWhereInput | boolean
+  delete?: Prisma.BankBranchWhereInput | boolean
   connect?: Prisma.BankBranchWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.BankBranchUpdateToOneWithWhereWithoutUsersInput, Prisma.BankBranchUpdateWithoutUsersInput>, Prisma.BankBranchUncheckedUpdateWithoutUsersInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BankBranchUpdateToOneWithWhereWithoutRrbUsersInput, Prisma.BankBranchUpdateWithoutRrbUsersInput>, Prisma.BankBranchUncheckedUpdateWithoutRrbUsersInput>
 }
 
-export type BankBranchCreateWithoutChildBranchesInput = {
-  branchCode: string
-  branchName: string
-  isActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  bank: Prisma.BankCreateNestedOneWithoutBranchesInput
-  parentBranch?: Prisma.BankBranchCreateNestedOneWithoutChildBranchesInput
-  preRegisteredUsers?: Prisma.PreRegisteredUserCreateNestedManyWithoutBranchInput
-  users?: Prisma.UserCreateNestedManyWithoutBranchInput
+export type BankBranchCreateNestedOneWithoutSsoUsersInput = {
+  create?: Prisma.XOR<Prisma.BankBranchCreateWithoutSsoUsersInput, Prisma.BankBranchUncheckedCreateWithoutSsoUsersInput>
+  connectOrCreate?: Prisma.BankBranchCreateOrConnectWithoutSsoUsersInput
+  connect?: Prisma.BankBranchWhereUniqueInput
 }
 
-export type BankBranchUncheckedCreateWithoutChildBranchesInput = {
-  id?: number
-  bankId: number
-  branchCode: string
-  branchName: string
-  parentBranchId?: number | null
-  isActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  preRegisteredUsers?: Prisma.PreRegisteredUserUncheckedCreateNestedManyWithoutBranchInput
-  users?: Prisma.UserUncheckedCreateNestedManyWithoutBranchInput
-}
-
-export type BankBranchCreateOrConnectWithoutChildBranchesInput = {
-  where: Prisma.BankBranchWhereUniqueInput
-  create: Prisma.XOR<Prisma.BankBranchCreateWithoutChildBranchesInput, Prisma.BankBranchUncheckedCreateWithoutChildBranchesInput>
-}
-
-export type BankBranchCreateWithoutParentBranchInput = {
-  branchCode: string
-  branchName: string
-  isActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  bank: Prisma.BankCreateNestedOneWithoutBranchesInput
-  childBranches?: Prisma.BankBranchCreateNestedManyWithoutParentBranchInput
-  preRegisteredUsers?: Prisma.PreRegisteredUserCreateNestedManyWithoutBranchInput
-  users?: Prisma.UserCreateNestedManyWithoutBranchInput
-}
-
-export type BankBranchUncheckedCreateWithoutParentBranchInput = {
-  id?: number
-  bankId: number
-  branchCode: string
-  branchName: string
-  isActive?: boolean
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  childBranches?: Prisma.BankBranchUncheckedCreateNestedManyWithoutParentBranchInput
-  preRegisteredUsers?: Prisma.PreRegisteredUserUncheckedCreateNestedManyWithoutBranchInput
-  users?: Prisma.UserUncheckedCreateNestedManyWithoutBranchInput
-}
-
-export type BankBranchCreateOrConnectWithoutParentBranchInput = {
-  where: Prisma.BankBranchWhereUniqueInput
-  create: Prisma.XOR<Prisma.BankBranchCreateWithoutParentBranchInput, Prisma.BankBranchUncheckedCreateWithoutParentBranchInput>
-}
-
-export type BankBranchCreateManyParentBranchInputEnvelope = {
-  data: Prisma.BankBranchCreateManyParentBranchInput | Prisma.BankBranchCreateManyParentBranchInput[]
-  skipDuplicates?: boolean
-}
-
-export type BankBranchUpsertWithoutChildBranchesInput = {
-  update: Prisma.XOR<Prisma.BankBranchUpdateWithoutChildBranchesInput, Prisma.BankBranchUncheckedUpdateWithoutChildBranchesInput>
-  create: Prisma.XOR<Prisma.BankBranchCreateWithoutChildBranchesInput, Prisma.BankBranchUncheckedCreateWithoutChildBranchesInput>
-  where?: Prisma.BankBranchWhereInput
-}
-
-export type BankBranchUpdateToOneWithWhereWithoutChildBranchesInput = {
-  where?: Prisma.BankBranchWhereInput
-  data: Prisma.XOR<Prisma.BankBranchUpdateWithoutChildBranchesInput, Prisma.BankBranchUncheckedUpdateWithoutChildBranchesInput>
-}
-
-export type BankBranchUpdateWithoutChildBranchesInput = {
-  branchCode?: Prisma.StringFieldUpdateOperationsInput | string
-  branchName?: Prisma.StringFieldUpdateOperationsInput | string
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  bank?: Prisma.BankUpdateOneRequiredWithoutBranchesNestedInput
-  parentBranch?: Prisma.BankBranchUpdateOneWithoutChildBranchesNestedInput
-  preRegisteredUsers?: Prisma.PreRegisteredUserUpdateManyWithoutBranchNestedInput
-  users?: Prisma.UserUpdateManyWithoutBranchNestedInput
-}
-
-export type BankBranchUncheckedUpdateWithoutChildBranchesInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  bankId?: Prisma.IntFieldUpdateOperationsInput | number
-  branchCode?: Prisma.StringFieldUpdateOperationsInput | string
-  branchName?: Prisma.StringFieldUpdateOperationsInput | string
-  parentBranchId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  preRegisteredUsers?: Prisma.PreRegisteredUserUncheckedUpdateManyWithoutBranchNestedInput
-  users?: Prisma.UserUncheckedUpdateManyWithoutBranchNestedInput
-}
-
-export type BankBranchUpsertWithWhereUniqueWithoutParentBranchInput = {
-  where: Prisma.BankBranchWhereUniqueInput
-  update: Prisma.XOR<Prisma.BankBranchUpdateWithoutParentBranchInput, Prisma.BankBranchUncheckedUpdateWithoutParentBranchInput>
-  create: Prisma.XOR<Prisma.BankBranchCreateWithoutParentBranchInput, Prisma.BankBranchUncheckedCreateWithoutParentBranchInput>
-}
-
-export type BankBranchUpdateWithWhereUniqueWithoutParentBranchInput = {
-  where: Prisma.BankBranchWhereUniqueInput
-  data: Prisma.XOR<Prisma.BankBranchUpdateWithoutParentBranchInput, Prisma.BankBranchUncheckedUpdateWithoutParentBranchInput>
-}
-
-export type BankBranchUpdateManyWithWhereWithoutParentBranchInput = {
-  where: Prisma.BankBranchScalarWhereInput
-  data: Prisma.XOR<Prisma.BankBranchUpdateManyMutationInput, Prisma.BankBranchUncheckedUpdateManyWithoutParentBranchInput>
-}
-
-export type BankBranchScalarWhereInput = {
-  AND?: Prisma.BankBranchScalarWhereInput | Prisma.BankBranchScalarWhereInput[]
-  OR?: Prisma.BankBranchScalarWhereInput[]
-  NOT?: Prisma.BankBranchScalarWhereInput | Prisma.BankBranchScalarWhereInput[]
-  id?: Prisma.IntFilter<"BankBranch"> | number
-  bankId?: Prisma.IntFilter<"BankBranch"> | number
-  branchCode?: Prisma.StringFilter<"BankBranch"> | string
-  branchName?: Prisma.StringFilter<"BankBranch"> | string
-  parentBranchId?: Prisma.IntNullableFilter<"BankBranch"> | number | null
-  isActive?: Prisma.BoolFilter<"BankBranch"> | boolean
-  createdAt?: Prisma.DateTimeFilter<"BankBranch"> | Date | string
-  updatedAt?: Prisma.DateTimeFilter<"BankBranch"> | Date | string
+export type BankBranchUpdateOneWithoutSsoUsersNestedInput = {
+  create?: Prisma.XOR<Prisma.BankBranchCreateWithoutSsoUsersInput, Prisma.BankBranchUncheckedCreateWithoutSsoUsersInput>
+  connectOrCreate?: Prisma.BankBranchCreateOrConnectWithoutSsoUsersInput
+  upsert?: Prisma.BankBranchUpsertWithoutSsoUsersInput
+  disconnect?: Prisma.BankBranchWhereInput | boolean
+  delete?: Prisma.BankBranchWhereInput | boolean
+  connect?: Prisma.BankBranchWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BankBranchUpdateToOneWithWhereWithoutSsoUsersInput, Prisma.BankBranchUpdateWithoutSsoUsersInput>, Prisma.BankBranchUncheckedUpdateWithoutSsoUsersInput>
 }
 
 export type BankBranchCreateWithoutBankInput = {
   branchCode: string
   branchName: string
+  network?: string | null
+  zone?: string | null
+  region?: string | null
+  sbiGiBranch?: string | null
+  circle?: string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  parentBranch?: Prisma.BankBranchCreateNestedOneWithoutChildBranchesInput
-  childBranches?: Prisma.BankBranchCreateNestedManyWithoutParentBranchInput
   preRegisteredUsers?: Prisma.PreRegisteredUserCreateNestedManyWithoutBranchInput
-  users?: Prisma.UserCreateNestedManyWithoutBranchInput
+  rrbUsers?: Prisma.RrbUserCreateNestedManyWithoutBranchInput
+  ssoUsers?: Prisma.SsoUserCreateNestedManyWithoutBranchInput
 }
 
 export type BankBranchUncheckedCreateWithoutBankInput = {
   id?: number
   branchCode: string
   branchName: string
-  parentBranchId?: number | null
+  network?: string | null
+  zone?: string | null
+  region?: string | null
+  sbiGiBranch?: string | null
+  circle?: string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  childBranches?: Prisma.BankBranchUncheckedCreateNestedManyWithoutParentBranchInput
   preRegisteredUsers?: Prisma.PreRegisteredUserUncheckedCreateNestedManyWithoutBranchInput
-  users?: Prisma.UserUncheckedCreateNestedManyWithoutBranchInput
+  rrbUsers?: Prisma.RrbUserUncheckedCreateNestedManyWithoutBranchInput
+  ssoUsers?: Prisma.SsoUserUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BankBranchCreateOrConnectWithoutBankInput = {
@@ -804,16 +730,38 @@ export type BankBranchUpdateManyWithWhereWithoutBankInput = {
   data: Prisma.XOR<Prisma.BankBranchUpdateManyMutationInput, Prisma.BankBranchUncheckedUpdateManyWithoutBankInput>
 }
 
+export type BankBranchScalarWhereInput = {
+  AND?: Prisma.BankBranchScalarWhereInput | Prisma.BankBranchScalarWhereInput[]
+  OR?: Prisma.BankBranchScalarWhereInput[]
+  NOT?: Prisma.BankBranchScalarWhereInput | Prisma.BankBranchScalarWhereInput[]
+  id?: Prisma.IntFilter<"BankBranch"> | number
+  bankId?: Prisma.IntFilter<"BankBranch"> | number
+  branchCode?: Prisma.StringFilter<"BankBranch"> | string
+  branchName?: Prisma.StringFilter<"BankBranch"> | string
+  network?: Prisma.StringNullableFilter<"BankBranch"> | string | null
+  zone?: Prisma.StringNullableFilter<"BankBranch"> | string | null
+  region?: Prisma.StringNullableFilter<"BankBranch"> | string | null
+  sbiGiBranch?: Prisma.StringNullableFilter<"BankBranch"> | string | null
+  circle?: Prisma.StringNullableFilter<"BankBranch"> | string | null
+  isActive?: Prisma.BoolFilter<"BankBranch"> | boolean
+  createdAt?: Prisma.DateTimeFilter<"BankBranch"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"BankBranch"> | Date | string
+}
+
 export type BankBranchCreateWithoutPreRegisteredUsersInput = {
   branchCode: string
   branchName: string
+  network?: string | null
+  zone?: string | null
+  region?: string | null
+  sbiGiBranch?: string | null
+  circle?: string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   bank: Prisma.BankCreateNestedOneWithoutBranchesInput
-  parentBranch?: Prisma.BankBranchCreateNestedOneWithoutChildBranchesInput
-  childBranches?: Prisma.BankBranchCreateNestedManyWithoutParentBranchInput
-  users?: Prisma.UserCreateNestedManyWithoutBranchInput
+  rrbUsers?: Prisma.RrbUserCreateNestedManyWithoutBranchInput
+  ssoUsers?: Prisma.SsoUserCreateNestedManyWithoutBranchInput
 }
 
 export type BankBranchUncheckedCreateWithoutPreRegisteredUsersInput = {
@@ -821,12 +769,16 @@ export type BankBranchUncheckedCreateWithoutPreRegisteredUsersInput = {
   bankId: number
   branchCode: string
   branchName: string
-  parentBranchId?: number | null
+  network?: string | null
+  zone?: string | null
+  region?: string | null
+  sbiGiBranch?: string | null
+  circle?: string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  childBranches?: Prisma.BankBranchUncheckedCreateNestedManyWithoutParentBranchInput
-  users?: Prisma.UserUncheckedCreateNestedManyWithoutBranchInput
+  rrbUsers?: Prisma.RrbUserUncheckedCreateNestedManyWithoutBranchInput
+  ssoUsers?: Prisma.SsoUserUncheckedCreateNestedManyWithoutBranchInput
 }
 
 export type BankBranchCreateOrConnectWithoutPreRegisteredUsersInput = {
@@ -848,13 +800,17 @@ export type BankBranchUpdateToOneWithWhereWithoutPreRegisteredUsersInput = {
 export type BankBranchUpdateWithoutPreRegisteredUsersInput = {
   branchCode?: Prisma.StringFieldUpdateOperationsInput | string
   branchName?: Prisma.StringFieldUpdateOperationsInput | string
+  network?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sbiGiBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  circle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bank?: Prisma.BankUpdateOneRequiredWithoutBranchesNestedInput
-  parentBranch?: Prisma.BankBranchUpdateOneWithoutChildBranchesNestedInput
-  childBranches?: Prisma.BankBranchUpdateManyWithoutParentBranchNestedInput
-  users?: Prisma.UserUpdateManyWithoutBranchNestedInput
+  rrbUsers?: Prisma.RrbUserUpdateManyWithoutBranchNestedInput
+  ssoUsers?: Prisma.SsoUserUpdateManyWithoutBranchNestedInput
 }
 
 export type BankBranchUncheckedUpdateWithoutPreRegisteredUsersInput = {
@@ -862,130 +818,191 @@ export type BankBranchUncheckedUpdateWithoutPreRegisteredUsersInput = {
   bankId?: Prisma.IntFieldUpdateOperationsInput | number
   branchCode?: Prisma.StringFieldUpdateOperationsInput | string
   branchName?: Prisma.StringFieldUpdateOperationsInput | string
-  parentBranchId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  network?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sbiGiBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  circle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  childBranches?: Prisma.BankBranchUncheckedUpdateManyWithoutParentBranchNestedInput
-  users?: Prisma.UserUncheckedUpdateManyWithoutBranchNestedInput
+  rrbUsers?: Prisma.RrbUserUncheckedUpdateManyWithoutBranchNestedInput
+  ssoUsers?: Prisma.SsoUserUncheckedUpdateManyWithoutBranchNestedInput
 }
 
-export type BankBranchCreateWithoutUsersInput = {
+export type BankBranchCreateWithoutRrbUsersInput = {
   branchCode: string
   branchName: string
+  network?: string | null
+  zone?: string | null
+  region?: string | null
+  sbiGiBranch?: string | null
+  circle?: string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   bank: Prisma.BankCreateNestedOneWithoutBranchesInput
-  parentBranch?: Prisma.BankBranchCreateNestedOneWithoutChildBranchesInput
-  childBranches?: Prisma.BankBranchCreateNestedManyWithoutParentBranchInput
   preRegisteredUsers?: Prisma.PreRegisteredUserCreateNestedManyWithoutBranchInput
+  ssoUsers?: Prisma.SsoUserCreateNestedManyWithoutBranchInput
 }
 
-export type BankBranchUncheckedCreateWithoutUsersInput = {
+export type BankBranchUncheckedCreateWithoutRrbUsersInput = {
   id?: number
   bankId: number
   branchCode: string
   branchName: string
-  parentBranchId?: number | null
+  network?: string | null
+  zone?: string | null
+  region?: string | null
+  sbiGiBranch?: string | null
+  circle?: string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  childBranches?: Prisma.BankBranchUncheckedCreateNestedManyWithoutParentBranchInput
   preRegisteredUsers?: Prisma.PreRegisteredUserUncheckedCreateNestedManyWithoutBranchInput
+  ssoUsers?: Prisma.SsoUserUncheckedCreateNestedManyWithoutBranchInput
 }
 
-export type BankBranchCreateOrConnectWithoutUsersInput = {
+export type BankBranchCreateOrConnectWithoutRrbUsersInput = {
   where: Prisma.BankBranchWhereUniqueInput
-  create: Prisma.XOR<Prisma.BankBranchCreateWithoutUsersInput, Prisma.BankBranchUncheckedCreateWithoutUsersInput>
+  create: Prisma.XOR<Prisma.BankBranchCreateWithoutRrbUsersInput, Prisma.BankBranchUncheckedCreateWithoutRrbUsersInput>
 }
 
-export type BankBranchUpsertWithoutUsersInput = {
-  update: Prisma.XOR<Prisma.BankBranchUpdateWithoutUsersInput, Prisma.BankBranchUncheckedUpdateWithoutUsersInput>
-  create: Prisma.XOR<Prisma.BankBranchCreateWithoutUsersInput, Prisma.BankBranchUncheckedCreateWithoutUsersInput>
+export type BankBranchUpsertWithoutRrbUsersInput = {
+  update: Prisma.XOR<Prisma.BankBranchUpdateWithoutRrbUsersInput, Prisma.BankBranchUncheckedUpdateWithoutRrbUsersInput>
+  create: Prisma.XOR<Prisma.BankBranchCreateWithoutRrbUsersInput, Prisma.BankBranchUncheckedCreateWithoutRrbUsersInput>
   where?: Prisma.BankBranchWhereInput
 }
 
-export type BankBranchUpdateToOneWithWhereWithoutUsersInput = {
+export type BankBranchUpdateToOneWithWhereWithoutRrbUsersInput = {
   where?: Prisma.BankBranchWhereInput
-  data: Prisma.XOR<Prisma.BankBranchUpdateWithoutUsersInput, Prisma.BankBranchUncheckedUpdateWithoutUsersInput>
+  data: Prisma.XOR<Prisma.BankBranchUpdateWithoutRrbUsersInput, Prisma.BankBranchUncheckedUpdateWithoutRrbUsersInput>
 }
 
-export type BankBranchUpdateWithoutUsersInput = {
+export type BankBranchUpdateWithoutRrbUsersInput = {
   branchCode?: Prisma.StringFieldUpdateOperationsInput | string
   branchName?: Prisma.StringFieldUpdateOperationsInput | string
+  network?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sbiGiBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  circle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bank?: Prisma.BankUpdateOneRequiredWithoutBranchesNestedInput
-  parentBranch?: Prisma.BankBranchUpdateOneWithoutChildBranchesNestedInput
-  childBranches?: Prisma.BankBranchUpdateManyWithoutParentBranchNestedInput
   preRegisteredUsers?: Prisma.PreRegisteredUserUpdateManyWithoutBranchNestedInput
+  ssoUsers?: Prisma.SsoUserUpdateManyWithoutBranchNestedInput
 }
 
-export type BankBranchUncheckedUpdateWithoutUsersInput = {
+export type BankBranchUncheckedUpdateWithoutRrbUsersInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   bankId?: Prisma.IntFieldUpdateOperationsInput | number
   branchCode?: Prisma.StringFieldUpdateOperationsInput | string
   branchName?: Prisma.StringFieldUpdateOperationsInput | string
-  parentBranchId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  network?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sbiGiBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  circle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  childBranches?: Prisma.BankBranchUncheckedUpdateManyWithoutParentBranchNestedInput
   preRegisteredUsers?: Prisma.PreRegisteredUserUncheckedUpdateManyWithoutBranchNestedInput
+  ssoUsers?: Prisma.SsoUserUncheckedUpdateManyWithoutBranchNestedInput
 }
 
-export type BankBranchCreateManyParentBranchInput = {
+export type BankBranchCreateWithoutSsoUsersInput = {
+  branchCode: string
+  branchName: string
+  network?: string | null
+  zone?: string | null
+  region?: string | null
+  sbiGiBranch?: string | null
+  circle?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  bank: Prisma.BankCreateNestedOneWithoutBranchesInput
+  preRegisteredUsers?: Prisma.PreRegisteredUserCreateNestedManyWithoutBranchInput
+  rrbUsers?: Prisma.RrbUserCreateNestedManyWithoutBranchInput
+}
+
+export type BankBranchUncheckedCreateWithoutSsoUsersInput = {
   id?: number
   bankId: number
   branchCode: string
   branchName: string
+  network?: string | null
+  zone?: string | null
+  region?: string | null
+  sbiGiBranch?: string | null
+  circle?: string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  preRegisteredUsers?: Prisma.PreRegisteredUserUncheckedCreateNestedManyWithoutBranchInput
+  rrbUsers?: Prisma.RrbUserUncheckedCreateNestedManyWithoutBranchInput
 }
 
-export type BankBranchUpdateWithoutParentBranchInput = {
+export type BankBranchCreateOrConnectWithoutSsoUsersInput = {
+  where: Prisma.BankBranchWhereUniqueInput
+  create: Prisma.XOR<Prisma.BankBranchCreateWithoutSsoUsersInput, Prisma.BankBranchUncheckedCreateWithoutSsoUsersInput>
+}
+
+export type BankBranchUpsertWithoutSsoUsersInput = {
+  update: Prisma.XOR<Prisma.BankBranchUpdateWithoutSsoUsersInput, Prisma.BankBranchUncheckedUpdateWithoutSsoUsersInput>
+  create: Prisma.XOR<Prisma.BankBranchCreateWithoutSsoUsersInput, Prisma.BankBranchUncheckedCreateWithoutSsoUsersInput>
+  where?: Prisma.BankBranchWhereInput
+}
+
+export type BankBranchUpdateToOneWithWhereWithoutSsoUsersInput = {
+  where?: Prisma.BankBranchWhereInput
+  data: Prisma.XOR<Prisma.BankBranchUpdateWithoutSsoUsersInput, Prisma.BankBranchUncheckedUpdateWithoutSsoUsersInput>
+}
+
+export type BankBranchUpdateWithoutSsoUsersInput = {
   branchCode?: Prisma.StringFieldUpdateOperationsInput | string
   branchName?: Prisma.StringFieldUpdateOperationsInput | string
+  network?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sbiGiBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  circle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   bank?: Prisma.BankUpdateOneRequiredWithoutBranchesNestedInput
-  childBranches?: Prisma.BankBranchUpdateManyWithoutParentBranchNestedInput
   preRegisteredUsers?: Prisma.PreRegisteredUserUpdateManyWithoutBranchNestedInput
-  users?: Prisma.UserUpdateManyWithoutBranchNestedInput
+  rrbUsers?: Prisma.RrbUserUpdateManyWithoutBranchNestedInput
 }
 
-export type BankBranchUncheckedUpdateWithoutParentBranchInput = {
+export type BankBranchUncheckedUpdateWithoutSsoUsersInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   bankId?: Prisma.IntFieldUpdateOperationsInput | number
   branchCode?: Prisma.StringFieldUpdateOperationsInput | string
   branchName?: Prisma.StringFieldUpdateOperationsInput | string
+  network?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sbiGiBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  circle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  childBranches?: Prisma.BankBranchUncheckedUpdateManyWithoutParentBranchNestedInput
   preRegisteredUsers?: Prisma.PreRegisteredUserUncheckedUpdateManyWithoutBranchNestedInput
-  users?: Prisma.UserUncheckedUpdateManyWithoutBranchNestedInput
-}
-
-export type BankBranchUncheckedUpdateManyWithoutParentBranchInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  bankId?: Prisma.IntFieldUpdateOperationsInput | number
-  branchCode?: Prisma.StringFieldUpdateOperationsInput | string
-  branchName?: Prisma.StringFieldUpdateOperationsInput | string
-  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  rrbUsers?: Prisma.RrbUserUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 export type BankBranchCreateManyBankInput = {
   id?: number
   branchCode: string
   branchName: string
-  parentBranchId?: number | null
+  network?: string | null
+  zone?: string | null
+  region?: string | null
+  sbiGiBranch?: string | null
+  circle?: string | null
   isActive?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -994,33 +1011,45 @@ export type BankBranchCreateManyBankInput = {
 export type BankBranchUpdateWithoutBankInput = {
   branchCode?: Prisma.StringFieldUpdateOperationsInput | string
   branchName?: Prisma.StringFieldUpdateOperationsInput | string
+  network?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sbiGiBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  circle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  parentBranch?: Prisma.BankBranchUpdateOneWithoutChildBranchesNestedInput
-  childBranches?: Prisma.BankBranchUpdateManyWithoutParentBranchNestedInput
   preRegisteredUsers?: Prisma.PreRegisteredUserUpdateManyWithoutBranchNestedInput
-  users?: Prisma.UserUpdateManyWithoutBranchNestedInput
+  rrbUsers?: Prisma.RrbUserUpdateManyWithoutBranchNestedInput
+  ssoUsers?: Prisma.SsoUserUpdateManyWithoutBranchNestedInput
 }
 
 export type BankBranchUncheckedUpdateWithoutBankInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   branchCode?: Prisma.StringFieldUpdateOperationsInput | string
   branchName?: Prisma.StringFieldUpdateOperationsInput | string
-  parentBranchId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  network?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sbiGiBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  circle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  childBranches?: Prisma.BankBranchUncheckedUpdateManyWithoutParentBranchNestedInput
   preRegisteredUsers?: Prisma.PreRegisteredUserUncheckedUpdateManyWithoutBranchNestedInput
-  users?: Prisma.UserUncheckedUpdateManyWithoutBranchNestedInput
+  rrbUsers?: Prisma.RrbUserUncheckedUpdateManyWithoutBranchNestedInput
+  ssoUsers?: Prisma.SsoUserUncheckedUpdateManyWithoutBranchNestedInput
 }
 
 export type BankBranchUncheckedUpdateManyWithoutBankInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   branchCode?: Prisma.StringFieldUpdateOperationsInput | string
   branchName?: Prisma.StringFieldUpdateOperationsInput | string
-  parentBranchId?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  network?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  zone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  region?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sbiGiBranch?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  circle?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1032,15 +1061,15 @@ export type BankBranchUncheckedUpdateManyWithoutBankInput = {
  */
 
 export type BankBranchCountOutputType = {
-  childBranches: number
   preRegisteredUsers: number
-  users: number
+  rrbUsers: number
+  ssoUsers: number
 }
 
 export type BankBranchCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  childBranches?: boolean | BankBranchCountOutputTypeCountChildBranchesArgs
   preRegisteredUsers?: boolean | BankBranchCountOutputTypeCountPreRegisteredUsersArgs
-  users?: boolean | BankBranchCountOutputTypeCountUsersArgs
+  rrbUsers?: boolean | BankBranchCountOutputTypeCountRrbUsersArgs
+  ssoUsers?: boolean | BankBranchCountOutputTypeCountSsoUsersArgs
 }
 
 /**
@@ -1056,13 +1085,6 @@ export type BankBranchCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.E
 /**
  * BankBranchCountOutputType without action
  */
-export type BankBranchCountOutputTypeCountChildBranchesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.BankBranchWhereInput
-}
-
-/**
- * BankBranchCountOutputType without action
- */
 export type BankBranchCountOutputTypeCountPreRegisteredUsersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.PreRegisteredUserWhereInput
 }
@@ -1070,8 +1092,15 @@ export type BankBranchCountOutputTypeCountPreRegisteredUsersArgs<ExtArgs extends
 /**
  * BankBranchCountOutputType without action
  */
-export type BankBranchCountOutputTypeCountUsersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.UserWhereInput
+export type BankBranchCountOutputTypeCountRrbUsersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RrbUserWhereInput
+}
+
+/**
+ * BankBranchCountOutputType without action
+ */
+export type BankBranchCountOutputTypeCountSsoUsersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SsoUserWhereInput
 }
 
 
@@ -1080,15 +1109,18 @@ export type BankBranchSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   bankId?: boolean
   branchCode?: boolean
   branchName?: boolean
-  parentBranchId?: boolean
+  network?: boolean
+  zone?: boolean
+  region?: boolean
+  sbiGiBranch?: boolean
+  circle?: boolean
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   bank?: boolean | Prisma.BankDefaultArgs<ExtArgs>
-  parentBranch?: boolean | Prisma.BankBranch$parentBranchArgs<ExtArgs>
-  childBranches?: boolean | Prisma.BankBranch$childBranchesArgs<ExtArgs>
   preRegisteredUsers?: boolean | Prisma.BankBranch$preRegisteredUsersArgs<ExtArgs>
-  users?: boolean | Prisma.BankBranch$usersArgs<ExtArgs>
+  rrbUsers?: boolean | Prisma.BankBranch$rrbUsersArgs<ExtArgs>
+  ssoUsers?: boolean | Prisma.BankBranch$ssoUsersArgs<ExtArgs>
   _count?: boolean | Prisma.BankBranchCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["bankBranch"]>
 
@@ -1099,19 +1131,22 @@ export type BankBranchSelectScalar = {
   bankId?: boolean
   branchCode?: boolean
   branchName?: boolean
-  parentBranchId?: boolean
+  network?: boolean
+  zone?: boolean
+  region?: boolean
+  sbiGiBranch?: boolean
+  circle?: boolean
   isActive?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type BankBranchOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "bankId" | "branchCode" | "branchName" | "parentBranchId" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["bankBranch"]>
+export type BankBranchOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "bankId" | "branchCode" | "branchName" | "network" | "zone" | "region" | "sbiGiBranch" | "circle" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["bankBranch"]>
 export type BankBranchInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   bank?: boolean | Prisma.BankDefaultArgs<ExtArgs>
-  parentBranch?: boolean | Prisma.BankBranch$parentBranchArgs<ExtArgs>
-  childBranches?: boolean | Prisma.BankBranch$childBranchesArgs<ExtArgs>
   preRegisteredUsers?: boolean | Prisma.BankBranch$preRegisteredUsersArgs<ExtArgs>
-  users?: boolean | Prisma.BankBranch$usersArgs<ExtArgs>
+  rrbUsers?: boolean | Prisma.BankBranch$rrbUsersArgs<ExtArgs>
+  ssoUsers?: boolean | Prisma.BankBranch$ssoUsersArgs<ExtArgs>
   _count?: boolean | Prisma.BankBranchCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -1119,17 +1154,20 @@ export type $BankBranchPayload<ExtArgs extends runtime.Types.Extensions.Internal
   name: "BankBranch"
   objects: {
     bank: Prisma.$BankPayload<ExtArgs>
-    parentBranch: Prisma.$BankBranchPayload<ExtArgs> | null
-    childBranches: Prisma.$BankBranchPayload<ExtArgs>[]
     preRegisteredUsers: Prisma.$PreRegisteredUserPayload<ExtArgs>[]
-    users: Prisma.$UserPayload<ExtArgs>[]
+    rrbUsers: Prisma.$RrbUserPayload<ExtArgs>[]
+    ssoUsers: Prisma.$SsoUserPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     bankId: number
     branchCode: string
     branchName: string
-    parentBranchId: number | null
+    network: string | null
+    zone: string | null
+    region: string | null
+    sbiGiBranch: string | null
+    circle: string | null
     isActive: boolean
     createdAt: Date
     updatedAt: Date
@@ -1474,10 +1512,9 @@ readonly fields: BankBranchFieldRefs;
 export interface Prisma__BankBranchClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   bank<T extends Prisma.BankDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BankDefaultArgs<ExtArgs>>): Prisma.Prisma__BankClient<runtime.Types.Result.GetResult<Prisma.$BankPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  parentBranch<T extends Prisma.BankBranch$parentBranchArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BankBranch$parentBranchArgs<ExtArgs>>): Prisma.Prisma__BankBranchClient<runtime.Types.Result.GetResult<Prisma.$BankBranchPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  childBranches<T extends Prisma.BankBranch$childBranchesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BankBranch$childBranchesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BankBranchPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   preRegisteredUsers<T extends Prisma.BankBranch$preRegisteredUsersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BankBranch$preRegisteredUsersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PreRegisteredUserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  users<T extends Prisma.BankBranch$usersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BankBranch$usersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  rrbUsers<T extends Prisma.BankBranch$rrbUsersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BankBranch$rrbUsersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RrbUserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  ssoUsers<T extends Prisma.BankBranch$ssoUsersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BankBranch$ssoUsersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SsoUserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1511,7 +1548,11 @@ export interface BankBranchFieldRefs {
   readonly bankId: Prisma.FieldRef<"BankBranch", 'Int'>
   readonly branchCode: Prisma.FieldRef<"BankBranch", 'String'>
   readonly branchName: Prisma.FieldRef<"BankBranch", 'String'>
-  readonly parentBranchId: Prisma.FieldRef<"BankBranch", 'Int'>
+  readonly network: Prisma.FieldRef<"BankBranch", 'String'>
+  readonly zone: Prisma.FieldRef<"BankBranch", 'String'>
+  readonly region: Prisma.FieldRef<"BankBranch", 'String'>
+  readonly sbiGiBranch: Prisma.FieldRef<"BankBranch", 'String'>
+  readonly circle: Prisma.FieldRef<"BankBranch", 'String'>
   readonly isActive: Prisma.FieldRef<"BankBranch", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"BankBranch", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"BankBranch", 'DateTime'>
@@ -1863,49 +1904,6 @@ export type BankBranchDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.In
 }
 
 /**
- * BankBranch.parentBranch
- */
-export type BankBranch$parentBranchArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the BankBranch
-   */
-  select?: Prisma.BankBranchSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the BankBranch
-   */
-  omit?: Prisma.BankBranchOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.BankBranchInclude<ExtArgs> | null
-  where?: Prisma.BankBranchWhereInput
-}
-
-/**
- * BankBranch.childBranches
- */
-export type BankBranch$childBranchesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the BankBranch
-   */
-  select?: Prisma.BankBranchSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the BankBranch
-   */
-  omit?: Prisma.BankBranchOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.BankBranchInclude<ExtArgs> | null
-  where?: Prisma.BankBranchWhereInput
-  orderBy?: Prisma.BankBranchOrderByWithRelationInput | Prisma.BankBranchOrderByWithRelationInput[]
-  cursor?: Prisma.BankBranchWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.BankBranchScalarFieldEnum | Prisma.BankBranchScalarFieldEnum[]
-}
-
-/**
  * BankBranch.preRegisteredUsers
  */
 export type BankBranch$preRegisteredUsersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1930,27 +1928,51 @@ export type BankBranch$preRegisteredUsersArgs<ExtArgs extends runtime.Types.Exte
 }
 
 /**
- * BankBranch.users
+ * BankBranch.rrbUsers
  */
-export type BankBranch$usersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type BankBranch$rrbUsersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the User
+   * Select specific fields to fetch from the RrbUser
    */
-  select?: Prisma.UserSelect<ExtArgs> | null
+  select?: Prisma.RrbUserSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the User
+   * Omit specific fields from the RrbUser
    */
-  omit?: Prisma.UserOmit<ExtArgs> | null
+  omit?: Prisma.RrbUserOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.UserInclude<ExtArgs> | null
-  where?: Prisma.UserWhereInput
-  orderBy?: Prisma.UserOrderByWithRelationInput | Prisma.UserOrderByWithRelationInput[]
-  cursor?: Prisma.UserWhereUniqueInput
+  include?: Prisma.RrbUserInclude<ExtArgs> | null
+  where?: Prisma.RrbUserWhereInput
+  orderBy?: Prisma.RrbUserOrderByWithRelationInput | Prisma.RrbUserOrderByWithRelationInput[]
+  cursor?: Prisma.RrbUserWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.UserScalarFieldEnum | Prisma.UserScalarFieldEnum[]
+  distinct?: Prisma.RrbUserScalarFieldEnum | Prisma.RrbUserScalarFieldEnum[]
+}
+
+/**
+ * BankBranch.ssoUsers
+ */
+export type BankBranch$ssoUsersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SsoUser
+   */
+  select?: Prisma.SsoUserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SsoUser
+   */
+  omit?: Prisma.SsoUserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SsoUserInclude<ExtArgs> | null
+  where?: Prisma.SsoUserWhereInput
+  orderBy?: Prisma.SsoUserOrderByWithRelationInput | Prisma.SsoUserOrderByWithRelationInput[]
+  cursor?: Prisma.SsoUserWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SsoUserScalarFieldEnum | Prisma.SsoUserScalarFieldEnum[]
 }
 
 /**

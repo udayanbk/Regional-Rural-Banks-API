@@ -5,7 +5,10 @@
 model PreRegisteredUser {
   id       Int @id @default(autoincrement()) @db.UnsignedInt
   bankId   Int @map("bank_id") @db.UnsignedInt
-  branchId Int @map("branch_id") @db.UnsignedInt
+  // branchId Int @map("branch_id") @db.UnsignedInt
+  branchId Int? @map("branch_id") @db.UnsignedInt
+  portal   RegistrationPortal
+  userType RegistrationUserType @map("user_type")
 
   employeeId   String?   @map("employee_id") @db.VarChar(100)
   employeeName String?   @map("employee_name") @db.VarChar(255)
@@ -24,7 +27,8 @@ model PreRegisteredUser {
   updatedAt DateTime @updatedAt @map("updated_at") @db.DateTime(6)
 
   bank   Bank       @relation(fields: [bankId], references: [id], onDelete: Restrict)
-  branch BankBranch @relation(fields: [branchId], references: [id], onDelete: Restrict)
+  // branch BankBranch @relation(fields: [branchId], references: [id], onDelete: Restrict)
+  branch BankBranch? @relation(fields: [branchId], references: [id], onDelete: Restrict)
 
   @@index([bankId, email, status])
   @@index([branchId])

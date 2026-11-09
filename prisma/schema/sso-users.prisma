@@ -1,0 +1,35 @@
+model SsoUser {
+  id                Int       @id @default(autoincrement()) @db.UnsignedInt
+  bankId            Int       @map("bank_id") @db.UnsignedInt
+  branchId          Int?      @map("branch_id") @db.UnsignedInt
+  roleId            Int       @map("role_id") @db.UnsignedInt
+
+  employeeId        String?   @map("employee_id") @db.VarChar(100)
+  employeeName      String?   @map("employee_name") @db.VarChar(255)
+  position          String?   @db.VarChar(190)
+  dateOfBirth       DateTime? @map("date_of_birth") @db.Date
+  gender            String?   @db.VarChar(30)
+  mobileNo          String?   @map("mobile_no") @db.VarChar(30)
+  email             String    @db.VarChar(190)
+
+  passwordHash      String    @map("password_hash") @db.VarChar(255)
+  mustChangePassword Boolean  @default(true) @map("must_change_password")
+
+  isActive          Boolean   @default(true) @map("is_active")
+  lastLoginTime     DateTime? @map("last_login_time") @db.DateTime(6)
+
+  createdAt         DateTime  @default(now()) @map("created_at") @db.DateTime(6)
+  updatedAt         DateTime  @updatedAt @map("updated_at") @db.DateTime(6)
+
+  bank              Bank      @relation(fields: [bankId], references: [id], onDelete: Restrict)
+  branch            BankBranch? @relation(fields: [branchId], references: [id], onDelete: Restrict)
+  role              SsoRole   @relation(fields: [roleId], references: [id], onDelete: Restrict)
+
+  sessions          SsoAuthSession[]
+
+  @@unique([bankId, email])
+  @@unique([bankId, employeeId])
+  @@index([roleId])
+  @@index([bankId, branchId, isActive])
+  @@map("sso_users")
+}

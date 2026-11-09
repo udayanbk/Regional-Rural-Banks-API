@@ -3,26 +3,26 @@
 // ==========================================
 
 model BankBranch {
-  id             Int     @id @default(autoincrement()) @db.UnsignedInt
-  bankId         Int     @map("bank_id") @db.UnsignedInt
-  branchCode     String  @map("branch_code") @db.VarChar(100)
-  branchName     String  @map("branch_name") @db.VarChar(255)
-  parentBranchId Int?    @map("parent_branch_id") @db.UnsignedInt
-  isActive       Boolean @default(true) @map("is_active")
-
-  createdAt DateTime @default(now()) @map("created_at") @db.DateTime(6)
-  updatedAt DateTime @updatedAt @map("updated_at") @db.DateTime(6)
+  id          Int     @id @default(autoincrement()) @db.UnsignedInt
+  bankId      Int     @map("bank_id") @db.UnsignedInt
+  branchCode  String  @map("branch_code") @db.VarChar(100)
+  branchName  String  @map("branch_name") @db.VarChar(255)
+  network     String? @db.VarChar(255)
+  zone        String? @db.VarChar(255)
+  region      String? @db.VarChar(255)
+  sbiGiBranch String? @map("sbi_gi_branch") @db.VarChar(255)
+  circle      String? @db.VarChar(255)
+  isActive    Boolean @default(true) @map("is_active")
+  createdAt   DateTime @default(now()) @map("created_at") @db.DateTime(6)
+  updatedAt   DateTime @updatedAt @map("updated_at") @db.DateTime(6)
 
   bank Bank @relation(fields: [bankId], references: [id], onDelete: Restrict)
 
-  parentBranch  BankBranch?  @relation("BranchHierarchy", fields: [parentBranchId], references: [id], onDelete: Restrict)
-  childBranches BankBranch[] @relation("BranchHierarchy")
-
   preRegisteredUsers PreRegisteredUser[]
-  users              User[]
+  rrbUsers           RrbUser[]
+  ssoUsers           SsoUser[]
 
   @@unique([bankId, branchCode])
   @@index([bankId, isActive])
-  @@index([parentBranchId])
   @@map("bank_branches")
 }

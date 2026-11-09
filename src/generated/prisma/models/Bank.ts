@@ -235,7 +235,8 @@ export type BankWhereInput = {
   emailDomains?: Prisma.BankEmailDomainListRelationFilter
   branches?: Prisma.BankBranchListRelationFilter
   preRegisteredUsers?: Prisma.PreRegisteredUserListRelationFilter
-  users?: Prisma.UserListRelationFilter
+  rrbUsers?: Prisma.RrbUserListRelationFilter
+  ssoUsers?: Prisma.SsoUserListRelationFilter
 }
 
 export type BankOrderByWithRelationInput = {
@@ -249,7 +250,8 @@ export type BankOrderByWithRelationInput = {
   emailDomains?: Prisma.BankEmailDomainOrderByRelationAggregateInput
   branches?: Prisma.BankBranchOrderByRelationAggregateInput
   preRegisteredUsers?: Prisma.PreRegisteredUserOrderByRelationAggregateInput
-  users?: Prisma.UserOrderByRelationAggregateInput
+  rrbUsers?: Prisma.RrbUserOrderByRelationAggregateInput
+  ssoUsers?: Prisma.SsoUserOrderByRelationAggregateInput
   _relevance?: Prisma.BankOrderByRelevanceInput
 }
 
@@ -267,7 +269,8 @@ export type BankWhereUniqueInput = Prisma.AtLeast<{
   emailDomains?: Prisma.BankEmailDomainListRelationFilter
   branches?: Prisma.BankBranchListRelationFilter
   preRegisteredUsers?: Prisma.PreRegisteredUserListRelationFilter
-  users?: Prisma.UserListRelationFilter
+  rrbUsers?: Prisma.RrbUserListRelationFilter
+  ssoUsers?: Prisma.SsoUserListRelationFilter
 }, "id" | "bankCode">
 
 export type BankOrderByWithAggregationInput = {
@@ -308,7 +311,8 @@ export type BankCreateInput = {
   emailDomains?: Prisma.BankEmailDomainCreateNestedManyWithoutBankInput
   branches?: Prisma.BankBranchCreateNestedManyWithoutBankInput
   preRegisteredUsers?: Prisma.PreRegisteredUserCreateNestedManyWithoutBankInput
-  users?: Prisma.UserCreateNestedManyWithoutBankInput
+  rrbUsers?: Prisma.RrbUserCreateNestedManyWithoutBankInput
+  ssoUsers?: Prisma.SsoUserCreateNestedManyWithoutBankInput
 }
 
 export type BankUncheckedCreateInput = {
@@ -322,7 +326,8 @@ export type BankUncheckedCreateInput = {
   emailDomains?: Prisma.BankEmailDomainUncheckedCreateNestedManyWithoutBankInput
   branches?: Prisma.BankBranchUncheckedCreateNestedManyWithoutBankInput
   preRegisteredUsers?: Prisma.PreRegisteredUserUncheckedCreateNestedManyWithoutBankInput
-  users?: Prisma.UserUncheckedCreateNestedManyWithoutBankInput
+  rrbUsers?: Prisma.RrbUserUncheckedCreateNestedManyWithoutBankInput
+  ssoUsers?: Prisma.SsoUserUncheckedCreateNestedManyWithoutBankInput
 }
 
 export type BankUpdateInput = {
@@ -335,7 +340,8 @@ export type BankUpdateInput = {
   emailDomains?: Prisma.BankEmailDomainUpdateManyWithoutBankNestedInput
   branches?: Prisma.BankBranchUpdateManyWithoutBankNestedInput
   preRegisteredUsers?: Prisma.PreRegisteredUserUpdateManyWithoutBankNestedInput
-  users?: Prisma.UserUpdateManyWithoutBankNestedInput
+  rrbUsers?: Prisma.RrbUserUpdateManyWithoutBankNestedInput
+  ssoUsers?: Prisma.SsoUserUpdateManyWithoutBankNestedInput
 }
 
 export type BankUncheckedUpdateInput = {
@@ -349,7 +355,8 @@ export type BankUncheckedUpdateInput = {
   emailDomains?: Prisma.BankEmailDomainUncheckedUpdateManyWithoutBankNestedInput
   branches?: Prisma.BankBranchUncheckedUpdateManyWithoutBankNestedInput
   preRegisteredUsers?: Prisma.PreRegisteredUserUncheckedUpdateManyWithoutBankNestedInput
-  users?: Prisma.UserUncheckedUpdateManyWithoutBankNestedInput
+  rrbUsers?: Prisma.RrbUserUncheckedUpdateManyWithoutBankNestedInput
+  ssoUsers?: Prisma.SsoUserUncheckedUpdateManyWithoutBankNestedInput
 }
 
 export type BankCreateManyInput = {
@@ -472,18 +479,32 @@ export type BankUpdateOneRequiredWithoutPreRegisteredUsersNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.BankUpdateToOneWithWhereWithoutPreRegisteredUsersInput, Prisma.BankUpdateWithoutPreRegisteredUsersInput>, Prisma.BankUncheckedUpdateWithoutPreRegisteredUsersInput>
 }
 
-export type BankCreateNestedOneWithoutUsersInput = {
-  create?: Prisma.XOR<Prisma.BankCreateWithoutUsersInput, Prisma.BankUncheckedCreateWithoutUsersInput>
-  connectOrCreate?: Prisma.BankCreateOrConnectWithoutUsersInput
+export type BankCreateNestedOneWithoutRrbUsersInput = {
+  create?: Prisma.XOR<Prisma.BankCreateWithoutRrbUsersInput, Prisma.BankUncheckedCreateWithoutRrbUsersInput>
+  connectOrCreate?: Prisma.BankCreateOrConnectWithoutRrbUsersInput
   connect?: Prisma.BankWhereUniqueInput
 }
 
-export type BankUpdateOneRequiredWithoutUsersNestedInput = {
-  create?: Prisma.XOR<Prisma.BankCreateWithoutUsersInput, Prisma.BankUncheckedCreateWithoutUsersInput>
-  connectOrCreate?: Prisma.BankCreateOrConnectWithoutUsersInput
-  upsert?: Prisma.BankUpsertWithoutUsersInput
+export type BankUpdateOneRequiredWithoutRrbUsersNestedInput = {
+  create?: Prisma.XOR<Prisma.BankCreateWithoutRrbUsersInput, Prisma.BankUncheckedCreateWithoutRrbUsersInput>
+  connectOrCreate?: Prisma.BankCreateOrConnectWithoutRrbUsersInput
+  upsert?: Prisma.BankUpsertWithoutRrbUsersInput
   connect?: Prisma.BankWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.BankUpdateToOneWithWhereWithoutUsersInput, Prisma.BankUpdateWithoutUsersInput>, Prisma.BankUncheckedUpdateWithoutUsersInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BankUpdateToOneWithWhereWithoutRrbUsersInput, Prisma.BankUpdateWithoutRrbUsersInput>, Prisma.BankUncheckedUpdateWithoutRrbUsersInput>
+}
+
+export type BankCreateNestedOneWithoutSsoUsersInput = {
+  create?: Prisma.XOR<Prisma.BankCreateWithoutSsoUsersInput, Prisma.BankUncheckedCreateWithoutSsoUsersInput>
+  connectOrCreate?: Prisma.BankCreateOrConnectWithoutSsoUsersInput
+  connect?: Prisma.BankWhereUniqueInput
+}
+
+export type BankUpdateOneRequiredWithoutSsoUsersNestedInput = {
+  create?: Prisma.XOR<Prisma.BankCreateWithoutSsoUsersInput, Prisma.BankUncheckedCreateWithoutSsoUsersInput>
+  connectOrCreate?: Prisma.BankCreateOrConnectWithoutSsoUsersInput
+  upsert?: Prisma.BankUpsertWithoutSsoUsersInput
+  connect?: Prisma.BankWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BankUpdateToOneWithWhereWithoutSsoUsersInput, Prisma.BankUpdateWithoutSsoUsersInput>, Prisma.BankUncheckedUpdateWithoutSsoUsersInput>
 }
 
 export type BankCreateWithoutBranchesInput = {
@@ -495,7 +516,8 @@ export type BankCreateWithoutBranchesInput = {
   updatedAt?: Date | string
   emailDomains?: Prisma.BankEmailDomainCreateNestedManyWithoutBankInput
   preRegisteredUsers?: Prisma.PreRegisteredUserCreateNestedManyWithoutBankInput
-  users?: Prisma.UserCreateNestedManyWithoutBankInput
+  rrbUsers?: Prisma.RrbUserCreateNestedManyWithoutBankInput
+  ssoUsers?: Prisma.SsoUserCreateNestedManyWithoutBankInput
 }
 
 export type BankUncheckedCreateWithoutBranchesInput = {
@@ -508,7 +530,8 @@ export type BankUncheckedCreateWithoutBranchesInput = {
   updatedAt?: Date | string
   emailDomains?: Prisma.BankEmailDomainUncheckedCreateNestedManyWithoutBankInput
   preRegisteredUsers?: Prisma.PreRegisteredUserUncheckedCreateNestedManyWithoutBankInput
-  users?: Prisma.UserUncheckedCreateNestedManyWithoutBankInput
+  rrbUsers?: Prisma.RrbUserUncheckedCreateNestedManyWithoutBankInput
+  ssoUsers?: Prisma.SsoUserUncheckedCreateNestedManyWithoutBankInput
 }
 
 export type BankCreateOrConnectWithoutBranchesInput = {
@@ -536,7 +559,8 @@ export type BankUpdateWithoutBranchesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   emailDomains?: Prisma.BankEmailDomainUpdateManyWithoutBankNestedInput
   preRegisteredUsers?: Prisma.PreRegisteredUserUpdateManyWithoutBankNestedInput
-  users?: Prisma.UserUpdateManyWithoutBankNestedInput
+  rrbUsers?: Prisma.RrbUserUpdateManyWithoutBankNestedInput
+  ssoUsers?: Prisma.SsoUserUpdateManyWithoutBankNestedInput
 }
 
 export type BankUncheckedUpdateWithoutBranchesInput = {
@@ -549,7 +573,8 @@ export type BankUncheckedUpdateWithoutBranchesInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   emailDomains?: Prisma.BankEmailDomainUncheckedUpdateManyWithoutBankNestedInput
   preRegisteredUsers?: Prisma.PreRegisteredUserUncheckedUpdateManyWithoutBankNestedInput
-  users?: Prisma.UserUncheckedUpdateManyWithoutBankNestedInput
+  rrbUsers?: Prisma.RrbUserUncheckedUpdateManyWithoutBankNestedInput
+  ssoUsers?: Prisma.SsoUserUncheckedUpdateManyWithoutBankNestedInput
 }
 
 export type BankCreateWithoutEmailDomainsInput = {
@@ -561,7 +586,8 @@ export type BankCreateWithoutEmailDomainsInput = {
   updatedAt?: Date | string
   branches?: Prisma.BankBranchCreateNestedManyWithoutBankInput
   preRegisteredUsers?: Prisma.PreRegisteredUserCreateNestedManyWithoutBankInput
-  users?: Prisma.UserCreateNestedManyWithoutBankInput
+  rrbUsers?: Prisma.RrbUserCreateNestedManyWithoutBankInput
+  ssoUsers?: Prisma.SsoUserCreateNestedManyWithoutBankInput
 }
 
 export type BankUncheckedCreateWithoutEmailDomainsInput = {
@@ -574,7 +600,8 @@ export type BankUncheckedCreateWithoutEmailDomainsInput = {
   updatedAt?: Date | string
   branches?: Prisma.BankBranchUncheckedCreateNestedManyWithoutBankInput
   preRegisteredUsers?: Prisma.PreRegisteredUserUncheckedCreateNestedManyWithoutBankInput
-  users?: Prisma.UserUncheckedCreateNestedManyWithoutBankInput
+  rrbUsers?: Prisma.RrbUserUncheckedCreateNestedManyWithoutBankInput
+  ssoUsers?: Prisma.SsoUserUncheckedCreateNestedManyWithoutBankInput
 }
 
 export type BankCreateOrConnectWithoutEmailDomainsInput = {
@@ -602,7 +629,8 @@ export type BankUpdateWithoutEmailDomainsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   branches?: Prisma.BankBranchUpdateManyWithoutBankNestedInput
   preRegisteredUsers?: Prisma.PreRegisteredUserUpdateManyWithoutBankNestedInput
-  users?: Prisma.UserUpdateManyWithoutBankNestedInput
+  rrbUsers?: Prisma.RrbUserUpdateManyWithoutBankNestedInput
+  ssoUsers?: Prisma.SsoUserUpdateManyWithoutBankNestedInput
 }
 
 export type BankUncheckedUpdateWithoutEmailDomainsInput = {
@@ -615,7 +643,8 @@ export type BankUncheckedUpdateWithoutEmailDomainsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   branches?: Prisma.BankBranchUncheckedUpdateManyWithoutBankNestedInput
   preRegisteredUsers?: Prisma.PreRegisteredUserUncheckedUpdateManyWithoutBankNestedInput
-  users?: Prisma.UserUncheckedUpdateManyWithoutBankNestedInput
+  rrbUsers?: Prisma.RrbUserUncheckedUpdateManyWithoutBankNestedInput
+  ssoUsers?: Prisma.SsoUserUncheckedUpdateManyWithoutBankNestedInput
 }
 
 export type BankCreateWithoutPreRegisteredUsersInput = {
@@ -627,7 +656,8 @@ export type BankCreateWithoutPreRegisteredUsersInput = {
   updatedAt?: Date | string
   emailDomains?: Prisma.BankEmailDomainCreateNestedManyWithoutBankInput
   branches?: Prisma.BankBranchCreateNestedManyWithoutBankInput
-  users?: Prisma.UserCreateNestedManyWithoutBankInput
+  rrbUsers?: Prisma.RrbUserCreateNestedManyWithoutBankInput
+  ssoUsers?: Prisma.SsoUserCreateNestedManyWithoutBankInput
 }
 
 export type BankUncheckedCreateWithoutPreRegisteredUsersInput = {
@@ -640,7 +670,8 @@ export type BankUncheckedCreateWithoutPreRegisteredUsersInput = {
   updatedAt?: Date | string
   emailDomains?: Prisma.BankEmailDomainUncheckedCreateNestedManyWithoutBankInput
   branches?: Prisma.BankBranchUncheckedCreateNestedManyWithoutBankInput
-  users?: Prisma.UserUncheckedCreateNestedManyWithoutBankInput
+  rrbUsers?: Prisma.RrbUserUncheckedCreateNestedManyWithoutBankInput
+  ssoUsers?: Prisma.SsoUserUncheckedCreateNestedManyWithoutBankInput
 }
 
 export type BankCreateOrConnectWithoutPreRegisteredUsersInput = {
@@ -668,7 +699,8 @@ export type BankUpdateWithoutPreRegisteredUsersInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   emailDomains?: Prisma.BankEmailDomainUpdateManyWithoutBankNestedInput
   branches?: Prisma.BankBranchUpdateManyWithoutBankNestedInput
-  users?: Prisma.UserUpdateManyWithoutBankNestedInput
+  rrbUsers?: Prisma.RrbUserUpdateManyWithoutBankNestedInput
+  ssoUsers?: Prisma.SsoUserUpdateManyWithoutBankNestedInput
 }
 
 export type BankUncheckedUpdateWithoutPreRegisteredUsersInput = {
@@ -681,10 +713,11 @@ export type BankUncheckedUpdateWithoutPreRegisteredUsersInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   emailDomains?: Prisma.BankEmailDomainUncheckedUpdateManyWithoutBankNestedInput
   branches?: Prisma.BankBranchUncheckedUpdateManyWithoutBankNestedInput
-  users?: Prisma.UserUncheckedUpdateManyWithoutBankNestedInput
+  rrbUsers?: Prisma.RrbUserUncheckedUpdateManyWithoutBankNestedInput
+  ssoUsers?: Prisma.SsoUserUncheckedUpdateManyWithoutBankNestedInput
 }
 
-export type BankCreateWithoutUsersInput = {
+export type BankCreateWithoutRrbUsersInput = {
   bankName: string
   bankCode: string
   address?: string | null
@@ -694,9 +727,10 @@ export type BankCreateWithoutUsersInput = {
   emailDomains?: Prisma.BankEmailDomainCreateNestedManyWithoutBankInput
   branches?: Prisma.BankBranchCreateNestedManyWithoutBankInput
   preRegisteredUsers?: Prisma.PreRegisteredUserCreateNestedManyWithoutBankInput
+  ssoUsers?: Prisma.SsoUserCreateNestedManyWithoutBankInput
 }
 
-export type BankUncheckedCreateWithoutUsersInput = {
+export type BankUncheckedCreateWithoutRrbUsersInput = {
   id?: number
   bankName: string
   bankCode: string
@@ -707,25 +741,26 @@ export type BankUncheckedCreateWithoutUsersInput = {
   emailDomains?: Prisma.BankEmailDomainUncheckedCreateNestedManyWithoutBankInput
   branches?: Prisma.BankBranchUncheckedCreateNestedManyWithoutBankInput
   preRegisteredUsers?: Prisma.PreRegisteredUserUncheckedCreateNestedManyWithoutBankInput
+  ssoUsers?: Prisma.SsoUserUncheckedCreateNestedManyWithoutBankInput
 }
 
-export type BankCreateOrConnectWithoutUsersInput = {
+export type BankCreateOrConnectWithoutRrbUsersInput = {
   where: Prisma.BankWhereUniqueInput
-  create: Prisma.XOR<Prisma.BankCreateWithoutUsersInput, Prisma.BankUncheckedCreateWithoutUsersInput>
+  create: Prisma.XOR<Prisma.BankCreateWithoutRrbUsersInput, Prisma.BankUncheckedCreateWithoutRrbUsersInput>
 }
 
-export type BankUpsertWithoutUsersInput = {
-  update: Prisma.XOR<Prisma.BankUpdateWithoutUsersInput, Prisma.BankUncheckedUpdateWithoutUsersInput>
-  create: Prisma.XOR<Prisma.BankCreateWithoutUsersInput, Prisma.BankUncheckedCreateWithoutUsersInput>
+export type BankUpsertWithoutRrbUsersInput = {
+  update: Prisma.XOR<Prisma.BankUpdateWithoutRrbUsersInput, Prisma.BankUncheckedUpdateWithoutRrbUsersInput>
+  create: Prisma.XOR<Prisma.BankCreateWithoutRrbUsersInput, Prisma.BankUncheckedCreateWithoutRrbUsersInput>
   where?: Prisma.BankWhereInput
 }
 
-export type BankUpdateToOneWithWhereWithoutUsersInput = {
+export type BankUpdateToOneWithWhereWithoutRrbUsersInput = {
   where?: Prisma.BankWhereInput
-  data: Prisma.XOR<Prisma.BankUpdateWithoutUsersInput, Prisma.BankUncheckedUpdateWithoutUsersInput>
+  data: Prisma.XOR<Prisma.BankUpdateWithoutRrbUsersInput, Prisma.BankUncheckedUpdateWithoutRrbUsersInput>
 }
 
-export type BankUpdateWithoutUsersInput = {
+export type BankUpdateWithoutRrbUsersInput = {
   bankName?: Prisma.StringFieldUpdateOperationsInput | string
   bankCode?: Prisma.StringFieldUpdateOperationsInput | string
   address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -735,9 +770,10 @@ export type BankUpdateWithoutUsersInput = {
   emailDomains?: Prisma.BankEmailDomainUpdateManyWithoutBankNestedInput
   branches?: Prisma.BankBranchUpdateManyWithoutBankNestedInput
   preRegisteredUsers?: Prisma.PreRegisteredUserUpdateManyWithoutBankNestedInput
+  ssoUsers?: Prisma.SsoUserUpdateManyWithoutBankNestedInput
 }
 
-export type BankUncheckedUpdateWithoutUsersInput = {
+export type BankUncheckedUpdateWithoutRrbUsersInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   bankName?: Prisma.StringFieldUpdateOperationsInput | string
   bankCode?: Prisma.StringFieldUpdateOperationsInput | string
@@ -748,6 +784,77 @@ export type BankUncheckedUpdateWithoutUsersInput = {
   emailDomains?: Prisma.BankEmailDomainUncheckedUpdateManyWithoutBankNestedInput
   branches?: Prisma.BankBranchUncheckedUpdateManyWithoutBankNestedInput
   preRegisteredUsers?: Prisma.PreRegisteredUserUncheckedUpdateManyWithoutBankNestedInput
+  ssoUsers?: Prisma.SsoUserUncheckedUpdateManyWithoutBankNestedInput
+}
+
+export type BankCreateWithoutSsoUsersInput = {
+  bankName: string
+  bankCode: string
+  address?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  emailDomains?: Prisma.BankEmailDomainCreateNestedManyWithoutBankInput
+  branches?: Prisma.BankBranchCreateNestedManyWithoutBankInput
+  preRegisteredUsers?: Prisma.PreRegisteredUserCreateNestedManyWithoutBankInput
+  rrbUsers?: Prisma.RrbUserCreateNestedManyWithoutBankInput
+}
+
+export type BankUncheckedCreateWithoutSsoUsersInput = {
+  id?: number
+  bankName: string
+  bankCode: string
+  address?: string | null
+  isActive?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  emailDomains?: Prisma.BankEmailDomainUncheckedCreateNestedManyWithoutBankInput
+  branches?: Prisma.BankBranchUncheckedCreateNestedManyWithoutBankInput
+  preRegisteredUsers?: Prisma.PreRegisteredUserUncheckedCreateNestedManyWithoutBankInput
+  rrbUsers?: Prisma.RrbUserUncheckedCreateNestedManyWithoutBankInput
+}
+
+export type BankCreateOrConnectWithoutSsoUsersInput = {
+  where: Prisma.BankWhereUniqueInput
+  create: Prisma.XOR<Prisma.BankCreateWithoutSsoUsersInput, Prisma.BankUncheckedCreateWithoutSsoUsersInput>
+}
+
+export type BankUpsertWithoutSsoUsersInput = {
+  update: Prisma.XOR<Prisma.BankUpdateWithoutSsoUsersInput, Prisma.BankUncheckedUpdateWithoutSsoUsersInput>
+  create: Prisma.XOR<Prisma.BankCreateWithoutSsoUsersInput, Prisma.BankUncheckedCreateWithoutSsoUsersInput>
+  where?: Prisma.BankWhereInput
+}
+
+export type BankUpdateToOneWithWhereWithoutSsoUsersInput = {
+  where?: Prisma.BankWhereInput
+  data: Prisma.XOR<Prisma.BankUpdateWithoutSsoUsersInput, Prisma.BankUncheckedUpdateWithoutSsoUsersInput>
+}
+
+export type BankUpdateWithoutSsoUsersInput = {
+  bankName?: Prisma.StringFieldUpdateOperationsInput | string
+  bankCode?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  emailDomains?: Prisma.BankEmailDomainUpdateManyWithoutBankNestedInput
+  branches?: Prisma.BankBranchUpdateManyWithoutBankNestedInput
+  preRegisteredUsers?: Prisma.PreRegisteredUserUpdateManyWithoutBankNestedInput
+  rrbUsers?: Prisma.RrbUserUpdateManyWithoutBankNestedInput
+}
+
+export type BankUncheckedUpdateWithoutSsoUsersInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  bankName?: Prisma.StringFieldUpdateOperationsInput | string
+  bankCode?: Prisma.StringFieldUpdateOperationsInput | string
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  emailDomains?: Prisma.BankEmailDomainUncheckedUpdateManyWithoutBankNestedInput
+  branches?: Prisma.BankBranchUncheckedUpdateManyWithoutBankNestedInput
+  preRegisteredUsers?: Prisma.PreRegisteredUserUncheckedUpdateManyWithoutBankNestedInput
+  rrbUsers?: Prisma.RrbUserUncheckedUpdateManyWithoutBankNestedInput
 }
 
 
@@ -759,14 +866,16 @@ export type BankCountOutputType = {
   emailDomains: number
   branches: number
   preRegisteredUsers: number
-  users: number
+  rrbUsers: number
+  ssoUsers: number
 }
 
 export type BankCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   emailDomains?: boolean | BankCountOutputTypeCountEmailDomainsArgs
   branches?: boolean | BankCountOutputTypeCountBranchesArgs
   preRegisteredUsers?: boolean | BankCountOutputTypeCountPreRegisteredUsersArgs
-  users?: boolean | BankCountOutputTypeCountUsersArgs
+  rrbUsers?: boolean | BankCountOutputTypeCountRrbUsersArgs
+  ssoUsers?: boolean | BankCountOutputTypeCountSsoUsersArgs
 }
 
 /**
@@ -803,8 +912,15 @@ export type BankCountOutputTypeCountPreRegisteredUsersArgs<ExtArgs extends runti
 /**
  * BankCountOutputType without action
  */
-export type BankCountOutputTypeCountUsersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.UserWhereInput
+export type BankCountOutputTypeCountRrbUsersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.RrbUserWhereInput
+}
+
+/**
+ * BankCountOutputType without action
+ */
+export type BankCountOutputTypeCountSsoUsersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SsoUserWhereInput
 }
 
 
@@ -819,7 +935,8 @@ export type BankSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   emailDomains?: boolean | Prisma.Bank$emailDomainsArgs<ExtArgs>
   branches?: boolean | Prisma.Bank$branchesArgs<ExtArgs>
   preRegisteredUsers?: boolean | Prisma.Bank$preRegisteredUsersArgs<ExtArgs>
-  users?: boolean | Prisma.Bank$usersArgs<ExtArgs>
+  rrbUsers?: boolean | Prisma.Bank$rrbUsersArgs<ExtArgs>
+  ssoUsers?: boolean | Prisma.Bank$ssoUsersArgs<ExtArgs>
   _count?: boolean | Prisma.BankCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["bank"]>
 
@@ -840,7 +957,8 @@ export type BankInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   emailDomains?: boolean | Prisma.Bank$emailDomainsArgs<ExtArgs>
   branches?: boolean | Prisma.Bank$branchesArgs<ExtArgs>
   preRegisteredUsers?: boolean | Prisma.Bank$preRegisteredUsersArgs<ExtArgs>
-  users?: boolean | Prisma.Bank$usersArgs<ExtArgs>
+  rrbUsers?: boolean | Prisma.Bank$rrbUsersArgs<ExtArgs>
+  ssoUsers?: boolean | Prisma.Bank$ssoUsersArgs<ExtArgs>
   _count?: boolean | Prisma.BankCountOutputTypeDefaultArgs<ExtArgs>
 }
 
@@ -850,7 +968,8 @@ export type $BankPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     emailDomains: Prisma.$BankEmailDomainPayload<ExtArgs>[]
     branches: Prisma.$BankBranchPayload<ExtArgs>[]
     preRegisteredUsers: Prisma.$PreRegisteredUserPayload<ExtArgs>[]
-    users: Prisma.$UserPayload<ExtArgs>[]
+    rrbUsers: Prisma.$RrbUserPayload<ExtArgs>[]
+    ssoUsers: Prisma.$SsoUserPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -1203,7 +1322,8 @@ export interface Prisma__BankClient<T, Null = never, ExtArgs extends runtime.Typ
   emailDomains<T extends Prisma.Bank$emailDomainsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Bank$emailDomainsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BankEmailDomainPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   branches<T extends Prisma.Bank$branchesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Bank$branchesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BankBranchPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   preRegisteredUsers<T extends Prisma.Bank$preRegisteredUsersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Bank$preRegisteredUsersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PreRegisteredUserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  users<T extends Prisma.Bank$usersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Bank$usersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  rrbUsers<T extends Prisma.Bank$rrbUsersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Bank$rrbUsersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$RrbUserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  ssoUsers<T extends Prisma.Bank$ssoUsersArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Bank$ssoUsersArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SsoUserPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1660,27 +1780,51 @@ export type Bank$preRegisteredUsersArgs<ExtArgs extends runtime.Types.Extensions
 }
 
 /**
- * Bank.users
+ * Bank.rrbUsers
  */
-export type Bank$usersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type Bank$rrbUsersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the User
+   * Select specific fields to fetch from the RrbUser
    */
-  select?: Prisma.UserSelect<ExtArgs> | null
+  select?: Prisma.RrbUserSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the User
+   * Omit specific fields from the RrbUser
    */
-  omit?: Prisma.UserOmit<ExtArgs> | null
+  omit?: Prisma.RrbUserOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.UserInclude<ExtArgs> | null
-  where?: Prisma.UserWhereInput
-  orderBy?: Prisma.UserOrderByWithRelationInput | Prisma.UserOrderByWithRelationInput[]
-  cursor?: Prisma.UserWhereUniqueInput
+  include?: Prisma.RrbUserInclude<ExtArgs> | null
+  where?: Prisma.RrbUserWhereInput
+  orderBy?: Prisma.RrbUserOrderByWithRelationInput | Prisma.RrbUserOrderByWithRelationInput[]
+  cursor?: Prisma.RrbUserWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.UserScalarFieldEnum | Prisma.UserScalarFieldEnum[]
+  distinct?: Prisma.RrbUserScalarFieldEnum | Prisma.RrbUserScalarFieldEnum[]
+}
+
+/**
+ * Bank.ssoUsers
+ */
+export type Bank$ssoUsersArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SsoUser
+   */
+  select?: Prisma.SsoUserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SsoUser
+   */
+  omit?: Prisma.SsoUserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SsoUserInclude<ExtArgs> | null
+  where?: Prisma.SsoUserWhereInput
+  orderBy?: Prisma.SsoUserOrderByWithRelationInput | Prisma.SsoUserOrderByWithRelationInput[]
+  cursor?: Prisma.SsoUserWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SsoUserScalarFieldEnum | Prisma.SsoUserScalarFieldEnum[]
 }
 
 /**

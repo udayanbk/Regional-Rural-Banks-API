@@ -31,8 +31,8 @@ export * from "./enums.js"
  * const prisma = new PrismaClient({
  *   adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL })
  * })
- * // Fetch zero or more AuthSessions
- * const authSessions = await prisma.authSession.findMany()
+ * // Fetch zero or more BankBranches
+ * const bankBranches = await prisma.bankBranch.findMany()
  * ```
  * 
  * Read more in our [docs](https://pris.ly/d/client).
@@ -41,11 +41,6 @@ export const PrismaClient = $Class.getPrismaClientClass()
 export type PrismaClient<LogOpts extends Prisma.LogLevel = never, OmitOpts extends Prisma.PrismaClientOptions["omit"] = Prisma.PrismaClientOptions["omit"], ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = $Class.PrismaClient<LogOpts, OmitOpts, ExtArgs>
 export { Prisma }
 
-/**
- * Model AuthSession
- * 
- */
-export type AuthSession = Prisma.AuthSessionModel
 /**
  * Model BankBranch
  * 
@@ -67,7 +62,27 @@ export type Bank = Prisma.BankModel
  */
 export type PreRegisteredUser = Prisma.PreRegisteredUserModel
 /**
- * Model User
+ * Model RrbUser
  * 
  */
-export type User = Prisma.UserModel
+export type RrbUser = Prisma.RrbUserModel
+/**
+ * Model RrbAuthSession
+ * 
+ */
+export type RrbAuthSession = Prisma.RrbAuthSessionModel
+/**
+ * Model SsoAuthSession
+ * 
+ */
+export type SsoAuthSession = Prisma.SsoAuthSessionModel
+/**
+ * Model SsoRole
+ * 
+ */
+export type SsoRole = Prisma.SsoRoleModel
+/**
+ * Model SsoUser
+ * 
+ */
+export type SsoUser = Prisma.SsoUserModel

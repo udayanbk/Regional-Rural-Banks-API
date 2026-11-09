@@ -51,12 +51,15 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
-  AuthSession: 'AuthSession',
   BankBranch: 'BankBranch',
   BankEmailDomain: 'BankEmailDomain',
   Bank: 'Bank',
   PreRegisteredUser: 'PreRegisteredUser',
-  User: 'User'
+  RrbUser: 'RrbUser',
+  RrbAuthSession: 'RrbAuthSession',
+  SsoAuthSession: 'SsoAuthSession',
+  SsoRole: 'SsoRole',
+  SsoUser: 'SsoUser'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -75,27 +78,16 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const AuthSessionScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  tokenHash: 'tokenHash',
-  expiresAt: 'expiresAt',
-  revokedAt: 'revokedAt',
-  lastUsedAt: 'lastUsedAt',
-  ipAddress: 'ipAddress',
-  userAgent: 'userAgent',
-  createdAt: 'createdAt'
-} as const
-
-export type AuthSessionScalarFieldEnum = (typeof AuthSessionScalarFieldEnum)[keyof typeof AuthSessionScalarFieldEnum]
-
-
 export const BankBranchScalarFieldEnum = {
   id: 'id',
   bankId: 'bankId',
   branchCode: 'branchCode',
   branchName: 'branchName',
-  parentBranchId: 'parentBranchId',
+  network: 'network',
+  zone: 'zone',
+  region: 'region',
+  sbiGiBranch: 'sbiGiBranch',
+  circle: 'circle',
   isActive: 'isActive',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -133,6 +125,8 @@ export const PreRegisteredUserScalarFieldEnum = {
   id: 'id',
   bankId: 'bankId',
   branchId: 'branchId',
+  portal: 'portal',
+  userType: 'userType',
   employeeId: 'employeeId',
   employeeName: 'employeeName',
   position: 'position',
@@ -151,7 +145,7 @@ export const PreRegisteredUserScalarFieldEnum = {
 export type PreRegisteredUserScalarFieldEnum = (typeof PreRegisteredUserScalarFieldEnum)[keyof typeof PreRegisteredUserScalarFieldEnum]
 
 
-export const UserScalarFieldEnum = {
+export const RrbUserScalarFieldEnum = {
   id: 'id',
   bankId: 'bankId',
   branchId: 'branchId',
@@ -168,7 +162,73 @@ export const UserScalarFieldEnum = {
   updatedAt: 'updatedAt'
 } as const
 
-export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+export type RrbUserScalarFieldEnum = (typeof RrbUserScalarFieldEnum)[keyof typeof RrbUserScalarFieldEnum]
+
+
+export const RrbAuthSessionScalarFieldEnum = {
+  id: 'id',
+  rrbUserId: 'rrbUserId',
+  tokenHash: 'tokenHash',
+  expiresAt: 'expiresAt',
+  revokedAt: 'revokedAt',
+  lastUsedAt: 'lastUsedAt',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent',
+  createdAt: 'createdAt'
+} as const
+
+export type RrbAuthSessionScalarFieldEnum = (typeof RrbAuthSessionScalarFieldEnum)[keyof typeof RrbAuthSessionScalarFieldEnum]
+
+
+export const SsoAuthSessionScalarFieldEnum = {
+  id: 'id',
+  ssoUserId: 'ssoUserId',
+  tokenHash: 'tokenHash',
+  expiresAt: 'expiresAt',
+  revokedAt: 'revokedAt',
+  lastUsedAt: 'lastUsedAt',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent',
+  createdAt: 'createdAt'
+} as const
+
+export type SsoAuthSessionScalarFieldEnum = (typeof SsoAuthSessionScalarFieldEnum)[keyof typeof SsoAuthSessionScalarFieldEnum]
+
+
+export const SsoRoleScalarFieldEnum = {
+  id: 'id',
+  roleCode: 'roleCode',
+  roleName: 'roleName',
+  description: 'description',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SsoRoleScalarFieldEnum = (typeof SsoRoleScalarFieldEnum)[keyof typeof SsoRoleScalarFieldEnum]
+
+
+export const SsoUserScalarFieldEnum = {
+  id: 'id',
+  bankId: 'bankId',
+  branchId: 'branchId',
+  roleId: 'roleId',
+  employeeId: 'employeeId',
+  employeeName: 'employeeName',
+  position: 'position',
+  dateOfBirth: 'dateOfBirth',
+  gender: 'gender',
+  mobileNo: 'mobileNo',
+  email: 'email',
+  passwordHash: 'passwordHash',
+  mustChangePassword: 'mustChangePassword',
+  isActive: 'isActive',
+  lastLoginTime: 'lastLoginTime',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SsoUserScalarFieldEnum = (typeof SsoUserScalarFieldEnum)[keyof typeof SsoUserScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -187,18 +247,14 @@ export const NullsOrder = {
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
-export const AuthSessionOrderByRelevanceFieldEnum = {
-  tokenHash: 'tokenHash',
-  ipAddress: 'ipAddress',
-  userAgent: 'userAgent'
-} as const
-
-export type AuthSessionOrderByRelevanceFieldEnum = (typeof AuthSessionOrderByRelevanceFieldEnum)[keyof typeof AuthSessionOrderByRelevanceFieldEnum]
-
-
 export const BankBranchOrderByRelevanceFieldEnum = {
   branchCode: 'branchCode',
-  branchName: 'branchName'
+  branchName: 'branchName',
+  network: 'network',
+  zone: 'zone',
+  region: 'region',
+  sbiGiBranch: 'sbiGiBranch',
+  circle: 'circle'
 } as const
 
 export type BankBranchOrderByRelevanceFieldEnum = (typeof BankBranchOrderByRelevanceFieldEnum)[keyof typeof BankBranchOrderByRelevanceFieldEnum]
@@ -233,7 +289,7 @@ export const PreRegisteredUserOrderByRelevanceFieldEnum = {
 export type PreRegisteredUserOrderByRelevanceFieldEnum = (typeof PreRegisteredUserOrderByRelevanceFieldEnum)[keyof typeof PreRegisteredUserOrderByRelevanceFieldEnum]
 
 
-export const UserOrderByRelevanceFieldEnum = {
+export const RrbUserOrderByRelevanceFieldEnum = {
   employeeId: 'employeeId',
   employeeName: 'employeeName',
   position: 'position',
@@ -242,5 +298,45 @@ export const UserOrderByRelevanceFieldEnum = {
   email: 'email'
 } as const
 
-export type UserOrderByRelevanceFieldEnum = (typeof UserOrderByRelevanceFieldEnum)[keyof typeof UserOrderByRelevanceFieldEnum]
+export type RrbUserOrderByRelevanceFieldEnum = (typeof RrbUserOrderByRelevanceFieldEnum)[keyof typeof RrbUserOrderByRelevanceFieldEnum]
+
+
+export const RrbAuthSessionOrderByRelevanceFieldEnum = {
+  tokenHash: 'tokenHash',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent'
+} as const
+
+export type RrbAuthSessionOrderByRelevanceFieldEnum = (typeof RrbAuthSessionOrderByRelevanceFieldEnum)[keyof typeof RrbAuthSessionOrderByRelevanceFieldEnum]
+
+
+export const SsoAuthSessionOrderByRelevanceFieldEnum = {
+  tokenHash: 'tokenHash',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent'
+} as const
+
+export type SsoAuthSessionOrderByRelevanceFieldEnum = (typeof SsoAuthSessionOrderByRelevanceFieldEnum)[keyof typeof SsoAuthSessionOrderByRelevanceFieldEnum]
+
+
+export const SsoRoleOrderByRelevanceFieldEnum = {
+  roleCode: 'roleCode',
+  roleName: 'roleName',
+  description: 'description'
+} as const
+
+export type SsoRoleOrderByRelevanceFieldEnum = (typeof SsoRoleOrderByRelevanceFieldEnum)[keyof typeof SsoRoleOrderByRelevanceFieldEnum]
+
+
+export const SsoUserOrderByRelevanceFieldEnum = {
+  employeeId: 'employeeId',
+  employeeName: 'employeeName',
+  position: 'position',
+  gender: 'gender',
+  mobileNo: 'mobileNo',
+  email: 'email',
+  passwordHash: 'passwordHash'
+} as const
+
+export type SsoUserOrderByRelevanceFieldEnum = (typeof SsoUserOrderByRelevanceFieldEnum)[keyof typeof SsoUserOrderByRelevanceFieldEnum]
 

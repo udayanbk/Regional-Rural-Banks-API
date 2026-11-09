@@ -3,3 +3,15 @@ enum RegistrationStatus {
   APPROVED
   REJECTED
 }
+
+enum RegistrationPortal {
+  SP
+  SSO
+}
+
+enum RegistrationUserType {
+  SP_EMPLOYEE
+  LICENSING_USER
+  SALES_SUPPORT_OFFICER
+  REGIONAL_MANAGER
+}

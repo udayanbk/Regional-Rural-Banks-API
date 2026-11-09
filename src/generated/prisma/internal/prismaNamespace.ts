@@ -397,12 +397,15 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 
 export const ModelName = {
-  AuthSession: 'AuthSession',
   BankBranch: 'BankBranch',
   BankEmailDomain: 'BankEmailDomain',
   Bank: 'Bank',
   PreRegisteredUser: 'PreRegisteredUser',
-  User: 'User'
+  RrbUser: 'RrbUser',
+  RrbAuthSession: 'RrbAuthSession',
+  SsoAuthSession: 'SsoAuthSession',
+  SsoRole: 'SsoRole',
+  SsoUser: 'SsoUser'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -418,76 +421,10 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "authSession" | "bankBranch" | "bankEmailDomain" | "bank" | "preRegisteredUser" | "user"
+    modelProps: "bankBranch" | "bankEmailDomain" | "bank" | "preRegisteredUser" | "rrbUser" | "rrbAuthSession" | "ssoAuthSession" | "ssoRole" | "ssoUser"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
-    AuthSession: {
-      payload: Prisma.$AuthSessionPayload<ExtArgs>
-      fields: Prisma.AuthSessionFieldRefs
-      operations: {
-        findUnique: {
-          args: Prisma.AuthSessionFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuthSessionPayload> | null
-        }
-        findUniqueOrThrow: {
-          args: Prisma.AuthSessionFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuthSessionPayload>
-        }
-        findFirst: {
-          args: Prisma.AuthSessionFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuthSessionPayload> | null
-        }
-        findFirstOrThrow: {
-          args: Prisma.AuthSessionFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuthSessionPayload>
-        }
-        findMany: {
-          args: Prisma.AuthSessionFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuthSessionPayload>[]
-        }
-        create: {
-          args: Prisma.AuthSessionCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuthSessionPayload>
-        }
-        createMany: {
-          args: Prisma.AuthSessionCreateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        delete: {
-          args: Prisma.AuthSessionDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuthSessionPayload>
-        }
-        update: {
-          args: Prisma.AuthSessionUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuthSessionPayload>
-        }
-        deleteMany: {
-          args: Prisma.AuthSessionDeleteManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        updateMany: {
-          args: Prisma.AuthSessionUpdateManyArgs<ExtArgs>
-          result: BatchPayload
-        }
-        upsert: {
-          args: Prisma.AuthSessionUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$AuthSessionPayload>
-        }
-        aggregate: {
-          args: Prisma.AuthSessionAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateAuthSession>
-        }
-        groupBy: {
-          args: Prisma.AuthSessionGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AuthSessionGroupByOutputType>[]
-        }
-        count: {
-          args: Prisma.AuthSessionCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AuthSessionCountAggregateOutputType> | number
-        }
-      }
-    }
     BankBranch: {
       payload: Prisma.$BankBranchPayload<ExtArgs>
       fields: Prisma.BankBranchFieldRefs
@@ -752,69 +689,333 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    User: {
-      payload: Prisma.$UserPayload<ExtArgs>
-      fields: Prisma.UserFieldRefs
+    RrbUser: {
+      payload: Prisma.$RrbUserPayload<ExtArgs>
+      fields: Prisma.RrbUserFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.UserFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserPayload> | null
+          args: Prisma.RrbUserFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RrbUserPayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.UserFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserPayload>
+          args: Prisma.RrbUserFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RrbUserPayload>
         }
         findFirst: {
-          args: Prisma.UserFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserPayload> | null
+          args: Prisma.RrbUserFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RrbUserPayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.UserFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserPayload>
+          args: Prisma.RrbUserFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RrbUserPayload>
         }
         findMany: {
-          args: Prisma.UserFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserPayload>[]
+          args: Prisma.RrbUserFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RrbUserPayload>[]
         }
         create: {
-          args: Prisma.UserCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserPayload>
+          args: Prisma.RrbUserCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RrbUserPayload>
         }
         createMany: {
-          args: Prisma.UserCreateManyArgs<ExtArgs>
+          args: Prisma.RrbUserCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         delete: {
-          args: Prisma.UserDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserPayload>
+          args: Prisma.RrbUserDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RrbUserPayload>
         }
         update: {
-          args: Prisma.UserUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserPayload>
+          args: Prisma.RrbUserUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RrbUserPayload>
         }
         deleteMany: {
-          args: Prisma.UserDeleteManyArgs<ExtArgs>
+          args: Prisma.RrbUserDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.UserUpdateManyArgs<ExtArgs>
+          args: Prisma.RrbUserUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         upsert: {
-          args: Prisma.UserUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$UserPayload>
+          args: Prisma.RrbUserUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RrbUserPayload>
         }
         aggregate: {
-          args: Prisma.UserAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateUser>
+          args: Prisma.RrbUserAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateRrbUser>
         }
         groupBy: {
-          args: Prisma.UserGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.UserGroupByOutputType>[]
+          args: Prisma.RrbUserGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RrbUserGroupByOutputType>[]
         }
         count: {
-          args: Prisma.UserCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.UserCountAggregateOutputType> | number
+          args: Prisma.RrbUserCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RrbUserCountAggregateOutputType> | number
+        }
+      }
+    }
+    RrbAuthSession: {
+      payload: Prisma.$RrbAuthSessionPayload<ExtArgs>
+      fields: Prisma.RrbAuthSessionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.RrbAuthSessionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RrbAuthSessionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.RrbAuthSessionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RrbAuthSessionPayload>
+        }
+        findFirst: {
+          args: Prisma.RrbAuthSessionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RrbAuthSessionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.RrbAuthSessionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RrbAuthSessionPayload>
+        }
+        findMany: {
+          args: Prisma.RrbAuthSessionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RrbAuthSessionPayload>[]
+        }
+        create: {
+          args: Prisma.RrbAuthSessionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RrbAuthSessionPayload>
+        }
+        createMany: {
+          args: Prisma.RrbAuthSessionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.RrbAuthSessionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RrbAuthSessionPayload>
+        }
+        update: {
+          args: Prisma.RrbAuthSessionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RrbAuthSessionPayload>
+        }
+        deleteMany: {
+          args: Prisma.RrbAuthSessionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.RrbAuthSessionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.RrbAuthSessionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$RrbAuthSessionPayload>
+        }
+        aggregate: {
+          args: Prisma.RrbAuthSessionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateRrbAuthSession>
+        }
+        groupBy: {
+          args: Prisma.RrbAuthSessionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RrbAuthSessionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.RrbAuthSessionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.RrbAuthSessionCountAggregateOutputType> | number
+        }
+      }
+    }
+    SsoAuthSession: {
+      payload: Prisma.$SsoAuthSessionPayload<ExtArgs>
+      fields: Prisma.SsoAuthSessionFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SsoAuthSessionFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SsoAuthSessionPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SsoAuthSessionFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SsoAuthSessionPayload>
+        }
+        findFirst: {
+          args: Prisma.SsoAuthSessionFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SsoAuthSessionPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SsoAuthSessionFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SsoAuthSessionPayload>
+        }
+        findMany: {
+          args: Prisma.SsoAuthSessionFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SsoAuthSessionPayload>[]
+        }
+        create: {
+          args: Prisma.SsoAuthSessionCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SsoAuthSessionPayload>
+        }
+        createMany: {
+          args: Prisma.SsoAuthSessionCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.SsoAuthSessionDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SsoAuthSessionPayload>
+        }
+        update: {
+          args: Prisma.SsoAuthSessionUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SsoAuthSessionPayload>
+        }
+        deleteMany: {
+          args: Prisma.SsoAuthSessionDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SsoAuthSessionUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.SsoAuthSessionUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SsoAuthSessionPayload>
+        }
+        aggregate: {
+          args: Prisma.SsoAuthSessionAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSsoAuthSession>
+        }
+        groupBy: {
+          args: Prisma.SsoAuthSessionGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SsoAuthSessionGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SsoAuthSessionCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SsoAuthSessionCountAggregateOutputType> | number
+        }
+      }
+    }
+    SsoRole: {
+      payload: Prisma.$SsoRolePayload<ExtArgs>
+      fields: Prisma.SsoRoleFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SsoRoleFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SsoRolePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SsoRoleFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SsoRolePayload>
+        }
+        findFirst: {
+          args: Prisma.SsoRoleFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SsoRolePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SsoRoleFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SsoRolePayload>
+        }
+        findMany: {
+          args: Prisma.SsoRoleFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SsoRolePayload>[]
+        }
+        create: {
+          args: Prisma.SsoRoleCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SsoRolePayload>
+        }
+        createMany: {
+          args: Prisma.SsoRoleCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.SsoRoleDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SsoRolePayload>
+        }
+        update: {
+          args: Prisma.SsoRoleUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SsoRolePayload>
+        }
+        deleteMany: {
+          args: Prisma.SsoRoleDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SsoRoleUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.SsoRoleUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SsoRolePayload>
+        }
+        aggregate: {
+          args: Prisma.SsoRoleAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSsoRole>
+        }
+        groupBy: {
+          args: Prisma.SsoRoleGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SsoRoleGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SsoRoleCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SsoRoleCountAggregateOutputType> | number
+        }
+      }
+    }
+    SsoUser: {
+      payload: Prisma.$SsoUserPayload<ExtArgs>
+      fields: Prisma.SsoUserFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SsoUserFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SsoUserPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SsoUserFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SsoUserPayload>
+        }
+        findFirst: {
+          args: Prisma.SsoUserFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SsoUserPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SsoUserFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SsoUserPayload>
+        }
+        findMany: {
+          args: Prisma.SsoUserFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SsoUserPayload>[]
+        }
+        create: {
+          args: Prisma.SsoUserCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SsoUserPayload>
+        }
+        createMany: {
+          args: Prisma.SsoUserCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        delete: {
+          args: Prisma.SsoUserDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SsoUserPayload>
+        }
+        update: {
+          args: Prisma.SsoUserUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SsoUserPayload>
+        }
+        deleteMany: {
+          args: Prisma.SsoUserDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SsoUserUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        upsert: {
+          args: Prisma.SsoUserUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SsoUserPayload>
+        }
+        aggregate: {
+          args: Prisma.SsoUserAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSsoUser>
+        }
+        groupBy: {
+          args: Prisma.SsoUserGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SsoUserGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SsoUserCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SsoUserCountAggregateOutputType> | number
         }
       }
     }
@@ -857,27 +1058,16 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
-export const AuthSessionScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  tokenHash: 'tokenHash',
-  expiresAt: 'expiresAt',
-  revokedAt: 'revokedAt',
-  lastUsedAt: 'lastUsedAt',
-  ipAddress: 'ipAddress',
-  userAgent: 'userAgent',
-  createdAt: 'createdAt'
-} as const
-
-export type AuthSessionScalarFieldEnum = (typeof AuthSessionScalarFieldEnum)[keyof typeof AuthSessionScalarFieldEnum]
-
-
 export const BankBranchScalarFieldEnum = {
   id: 'id',
   bankId: 'bankId',
   branchCode: 'branchCode',
   branchName: 'branchName',
-  parentBranchId: 'parentBranchId',
+  network: 'network',
+  zone: 'zone',
+  region: 'region',
+  sbiGiBranch: 'sbiGiBranch',
+  circle: 'circle',
   isActive: 'isActive',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -915,6 +1105,8 @@ export const PreRegisteredUserScalarFieldEnum = {
   id: 'id',
   bankId: 'bankId',
   branchId: 'branchId',
+  portal: 'portal',
+  userType: 'userType',
   employeeId: 'employeeId',
   employeeName: 'employeeName',
   position: 'position',
@@ -933,7 +1125,7 @@ export const PreRegisteredUserScalarFieldEnum = {
 export type PreRegisteredUserScalarFieldEnum = (typeof PreRegisteredUserScalarFieldEnum)[keyof typeof PreRegisteredUserScalarFieldEnum]
 
 
-export const UserScalarFieldEnum = {
+export const RrbUserScalarFieldEnum = {
   id: 'id',
   bankId: 'bankId',
   branchId: 'branchId',
@@ -950,7 +1142,73 @@ export const UserScalarFieldEnum = {
   updatedAt: 'updatedAt'
 } as const
 
-export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+export type RrbUserScalarFieldEnum = (typeof RrbUserScalarFieldEnum)[keyof typeof RrbUserScalarFieldEnum]
+
+
+export const RrbAuthSessionScalarFieldEnum = {
+  id: 'id',
+  rrbUserId: 'rrbUserId',
+  tokenHash: 'tokenHash',
+  expiresAt: 'expiresAt',
+  revokedAt: 'revokedAt',
+  lastUsedAt: 'lastUsedAt',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent',
+  createdAt: 'createdAt'
+} as const
+
+export type RrbAuthSessionScalarFieldEnum = (typeof RrbAuthSessionScalarFieldEnum)[keyof typeof RrbAuthSessionScalarFieldEnum]
+
+
+export const SsoAuthSessionScalarFieldEnum = {
+  id: 'id',
+  ssoUserId: 'ssoUserId',
+  tokenHash: 'tokenHash',
+  expiresAt: 'expiresAt',
+  revokedAt: 'revokedAt',
+  lastUsedAt: 'lastUsedAt',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent',
+  createdAt: 'createdAt'
+} as const
+
+export type SsoAuthSessionScalarFieldEnum = (typeof SsoAuthSessionScalarFieldEnum)[keyof typeof SsoAuthSessionScalarFieldEnum]
+
+
+export const SsoRoleScalarFieldEnum = {
+  id: 'id',
+  roleCode: 'roleCode',
+  roleName: 'roleName',
+  description: 'description',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SsoRoleScalarFieldEnum = (typeof SsoRoleScalarFieldEnum)[keyof typeof SsoRoleScalarFieldEnum]
+
+
+export const SsoUserScalarFieldEnum = {
+  id: 'id',
+  bankId: 'bankId',
+  branchId: 'branchId',
+  roleId: 'roleId',
+  employeeId: 'employeeId',
+  employeeName: 'employeeName',
+  position: 'position',
+  dateOfBirth: 'dateOfBirth',
+  gender: 'gender',
+  mobileNo: 'mobileNo',
+  email: 'email',
+  passwordHash: 'passwordHash',
+  mustChangePassword: 'mustChangePassword',
+  isActive: 'isActive',
+  lastLoginTime: 'lastLoginTime',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SsoUserScalarFieldEnum = (typeof SsoUserScalarFieldEnum)[keyof typeof SsoUserScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -969,18 +1227,14 @@ export const NullsOrder = {
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
-export const AuthSessionOrderByRelevanceFieldEnum = {
-  tokenHash: 'tokenHash',
-  ipAddress: 'ipAddress',
-  userAgent: 'userAgent'
-} as const
-
-export type AuthSessionOrderByRelevanceFieldEnum = (typeof AuthSessionOrderByRelevanceFieldEnum)[keyof typeof AuthSessionOrderByRelevanceFieldEnum]
-
-
 export const BankBranchOrderByRelevanceFieldEnum = {
   branchCode: 'branchCode',
-  branchName: 'branchName'
+  branchName: 'branchName',
+  network: 'network',
+  zone: 'zone',
+  region: 'region',
+  sbiGiBranch: 'sbiGiBranch',
+  circle: 'circle'
 } as const
 
 export type BankBranchOrderByRelevanceFieldEnum = (typeof BankBranchOrderByRelevanceFieldEnum)[keyof typeof BankBranchOrderByRelevanceFieldEnum]
@@ -1015,7 +1269,7 @@ export const PreRegisteredUserOrderByRelevanceFieldEnum = {
 export type PreRegisteredUserOrderByRelevanceFieldEnum = (typeof PreRegisteredUserOrderByRelevanceFieldEnum)[keyof typeof PreRegisteredUserOrderByRelevanceFieldEnum]
 
 
-export const UserOrderByRelevanceFieldEnum = {
+export const RrbUserOrderByRelevanceFieldEnum = {
   employeeId: 'employeeId',
   employeeName: 'employeeName',
   position: 'position',
@@ -1024,7 +1278,47 @@ export const UserOrderByRelevanceFieldEnum = {
   email: 'email'
 } as const
 
-export type UserOrderByRelevanceFieldEnum = (typeof UserOrderByRelevanceFieldEnum)[keyof typeof UserOrderByRelevanceFieldEnum]
+export type RrbUserOrderByRelevanceFieldEnum = (typeof RrbUserOrderByRelevanceFieldEnum)[keyof typeof RrbUserOrderByRelevanceFieldEnum]
+
+
+export const RrbAuthSessionOrderByRelevanceFieldEnum = {
+  tokenHash: 'tokenHash',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent'
+} as const
+
+export type RrbAuthSessionOrderByRelevanceFieldEnum = (typeof RrbAuthSessionOrderByRelevanceFieldEnum)[keyof typeof RrbAuthSessionOrderByRelevanceFieldEnum]
+
+
+export const SsoAuthSessionOrderByRelevanceFieldEnum = {
+  tokenHash: 'tokenHash',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent'
+} as const
+
+export type SsoAuthSessionOrderByRelevanceFieldEnum = (typeof SsoAuthSessionOrderByRelevanceFieldEnum)[keyof typeof SsoAuthSessionOrderByRelevanceFieldEnum]
+
+
+export const SsoRoleOrderByRelevanceFieldEnum = {
+  roleCode: 'roleCode',
+  roleName: 'roleName',
+  description: 'description'
+} as const
+
+export type SsoRoleOrderByRelevanceFieldEnum = (typeof SsoRoleOrderByRelevanceFieldEnum)[keyof typeof SsoRoleOrderByRelevanceFieldEnum]
+
+
+export const SsoUserOrderByRelevanceFieldEnum = {
+  employeeId: 'employeeId',
+  employeeName: 'employeeName',
+  position: 'position',
+  gender: 'gender',
+  mobileNo: 'mobileNo',
+  email: 'email',
+  passwordHash: 'passwordHash'
+} as const
+
+export type SsoUserOrderByRelevanceFieldEnum = (typeof SsoUserOrderByRelevanceFieldEnum)[keyof typeof SsoUserOrderByRelevanceFieldEnum]
 
 
 
@@ -1048,6 +1342,13 @@ export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 
 
 
 /**
+ * Reference to a field of type 'Boolean'
+ */
+export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+/**
  * Reference to a field of type 'DateTime'
  */
 export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -1055,9 +1356,16 @@ export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel
 
 
 /**
- * Reference to a field of type 'Boolean'
+ * Reference to a field of type 'RegistrationPortal'
  */
-export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+export type EnumRegistrationPortalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RegistrationPortal'>
+    
+
+
+/**
+ * Reference to a field of type 'RegistrationUserType'
+ */
+export type EnumRegistrationUserTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RegistrationUserType'>
     
 
 
@@ -1225,12 +1533,15 @@ export interface PrismaClientOptionsWithAdapter extends PrismaClientBaseOptions 
  */
 export type PrismaClientOptions = PrismaClientOptionsWithAccelerateUrl | PrismaClientOptionsWithAdapter
 export type GlobalOmitConfig = {
-  authSession?: Prisma.AuthSessionOmit
   bankBranch?: Prisma.BankBranchOmit
   bankEmailDomain?: Prisma.BankEmailDomainOmit
   bank?: Prisma.BankOmit
   preRegisteredUser?: Prisma.PreRegisteredUserOmit
-  user?: Prisma.UserOmit
+  rrbUser?: Prisma.RrbUserOmit
+  rrbAuthSession?: Prisma.RrbAuthSessionOmit
+  ssoAuthSession?: Prisma.SsoAuthSessionOmit
+  ssoRole?: Prisma.SsoRoleOmit
+  ssoUser?: Prisma.SsoUserOmit
 }
 
 /* Types for Logging */

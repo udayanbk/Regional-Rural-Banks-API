@@ -18,11 +18,6 @@ export { Prisma }
 export * as $Enums from './enums.js'
 export * from './enums.js';
 /**
- * Model AuthSession
- * 
- */
-export type AuthSession = Prisma.AuthSessionModel
-/**
  * Model BankBranch
  * 
  */
@@ -43,7 +38,27 @@ export type Bank = Prisma.BankModel
  */
 export type PreRegisteredUser = Prisma.PreRegisteredUserModel
 /**
- * Model User
+ * Model RrbUser
  * 
  */
-export type User = Prisma.UserModel
+export type RrbUser = Prisma.RrbUserModel
+/**
+ * Model RrbAuthSession
+ * 
+ */
+export type RrbAuthSession = Prisma.RrbAuthSessionModel
+/**
+ * Model SsoAuthSession
+ * 
+ */
+export type SsoAuthSession = Prisma.SsoAuthSessionModel
+/**
+ * Model SsoRole
+ * 
+ */
+export type SsoRole = Prisma.SsoRoleModel
+/**
+ * Model SsoUser
+ * 
+ */
+export type SsoUser = Prisma.SsoUserModel

@@ -1,0 +1,18 @@
+// ==========================================
+// SSO Roles
+// ==========================================
+
+model SsoRole {
+  id          Int      @id @default(autoincrement()) @db.UnsignedInt
+  roleCode    String   @unique @map("role_code") @db.VarChar(50)
+  roleName    String   @map("role_name") @db.VarChar(150)
+  description String?  @db.Text
+  isActive    Boolean  @default(true) @map("is_active")
+
+  createdAt   DateTime @default(now()) @map("created_at") @db.DateTime(6)
+  updatedAt   DateTime @updatedAt @map("updated_at") @db.DateTime(6)
+
+  ssoUsers       SsoUser[]
+
+  @@map("sso_roles")
+}

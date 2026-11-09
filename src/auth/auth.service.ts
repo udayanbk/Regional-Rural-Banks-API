@@ -52,7 +52,7 @@ export class AuthService {
     const normalizedEmail = this.normalizeEmail(email);
 
     // Generic response prevents account enumeration.
-    const users = await this.prisma.user.findMany({
+    const users = await this.prisma.rrbUser.findMany({
       where: {
         email: normalizedEmail,
         isActive: true,
@@ -90,7 +90,7 @@ export class AuthService {
       throw new UnauthorizedException('Invalid or expired OTP');
     }
 
-    const users = await this.prisma.user.findMany({
+    const users = await this.prisma.rrbUser.findMany({
       where: {
         email: normalizedEmail,
         isActive: true,
@@ -123,14 +123,14 @@ export class AuthService {
     const expiresAt = new Date(Date.now() + this.sessionDuration);
 
     await this.prisma.$transaction([
-      this.prisma.authSession.create({
+      this.prisma.rrbAuthSession.create({
         data: {
-          userId: user.id,
+          rrbUserId: user.id,
           tokenHash,
           expiresAt,
         },
       }),
-      this.prisma.user.update({
+      this.prisma.rrbUser.update({
         where: { id: user.id },
         data: { lastLoginTime: new Date() },
       }),
@@ -158,7 +158,7 @@ export class AuthService {
 
     const tokenHash = this.hashToken(token);
 
-    const session = await this.prisma.authSession.findUnique({
+    const session = await this.prisma.rrbAuthSession.findUnique({
       where: { tokenHash },
       include: {
         user: {
@@ -182,7 +182,7 @@ export class AuthService {
       return { authenticated: false };
     }
 
-    await this.prisma.authSession.update({
+    await this.prisma.rrbAuthSession.update({
       where: { id: session.id },
       data: { lastUsedAt: new Date() },
     });
@@ -204,7 +204,7 @@ export class AuthService {
 
   async logout(token: string | null) {
     if (token) {
-      await this.prisma.authSession.updateMany({
+      await this.prisma.rrbAuthSession.updateMany({
         where: {
           tokenHash: this.hashToken(token),
           revokedAt: null,

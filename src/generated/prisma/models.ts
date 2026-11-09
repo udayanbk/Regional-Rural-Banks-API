@@ -8,10 +8,13 @@
  *
  * 🟢 You can import this file directly.
  */
-export type * from './models/AuthSession.js'
 export type * from './models/BankBranch.js'
 export type * from './models/BankEmailDomain.js'
 export type * from './models/Bank.js'
 export type * from './models/PreRegisteredUser.js'
-export type * from './models/User.js'
+export type * from './models/RrbUser.js'
+export type * from './models/RrbAuthSession.js'
+export type * from './models/SsoAuthSession.js'
+export type * from './models/SsoRole.js'
+export type * from './models/SsoUser.js'
 export type * from './commonInputTypes.js'
